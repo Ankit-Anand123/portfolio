@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Header } from './components/common/Header';
 import { Hero } from './components/sections/Hero';
+import { About } from './components/sections/About';
+import { Experience } from './components/sections/Experience';
 import './styles/globals.css';
 
 function App() {
@@ -14,24 +16,11 @@ function App() {
           {/* Hero Section */}
           <Hero />
           
-          {/* Placeholder sections for Week 2 */}
-          <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800">
-            <div className="max-w-7xl mx-auto px-4 text-center">
-              <h2 className="text-3xl font-bold mb-8">About Me</h2>
-              <p className="text-gray-600 dark:text-gray-300">
-                Coming in Week 2 - Skills radar chart, bio, and current focus areas
-              </p>
-            </div>
-          </section>
+          {/* About Section - Now Live! */}
+          <About />
           
-          <section id="experience" className="py-20">
-            <div className="max-w-7xl mx-auto px-4 text-center">
-              <h2 className="text-3xl font-bold mb-8">Professional Journey</h2>
-              <p className="text-gray-600 dark:text-gray-300">
-                Coming in Week 2 - Interactive timeline with your career progression
-              </p>
-            </div>
-          </section>
+          {/* Experience Section - Now Live! */}
+          <Experience />
           
           <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
             <div className="max-w-7xl mx-auto px-4 text-center">
