@@ -3,9 +3,11 @@ import { SkillsRadar } from './components/SkillsRadar';
 import { Bio } from './components/Bio';
 import { CurrentFocus } from './components/CurrentFocus';
 import styles from './About.module.css';
+import { SectionReveal } from '../../animations';
 
 export const About: React.FC = () => {
   return (
+    <SectionReveal>
     <section id="about" className={styles.aboutSection}>
       <div className="max-w-7xl mx-auto px-4 py-20">
         {/* Section Header */}
@@ -18,6 +20,7 @@ export const About: React.FC = () => {
             and helping businesses solve complex problems through analytics and machine learning.
           </p>
         </div>
+        
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -73,5 +76,6 @@ export const About: React.FC = () => {
         </div>
       </div>
     </section>
+    </SectionReveal>
   );
 };

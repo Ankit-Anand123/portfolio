@@ -5,29 +5,6 @@ import { ArrowLeft, Brain, Camera, FileText, Mail, Zap, Star, Clock } from 'luci
 export const CreativePage: React.FC = () => {
   return (
     <div className="min-h-screen">
-      <div className="bg-gradient-to-r from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Creative Corner
-              </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
-                Photography gallery and poetry with AI analysis
-              </p>
-            </div>
-            
-            <Link
-              to="/"
-              className="flex items-center space-x-2 px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to Home</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <Camera className="w-24 h-24 text-pink-600 dark:text-pink-400 mx-auto mb-8" />
