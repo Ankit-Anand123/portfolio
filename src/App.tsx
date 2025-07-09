@@ -31,9 +31,9 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/experience" element={<ExperiencePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/ai-labs" element={<AILabsPage />} />
+            {/* <Route path="/ai-labs" element={<AILabsPage />} />
             <Route path="/creative" element={<CreativePage />} />
-            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog" element={<BlogPage />} /> */}
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>

@@ -1,26 +1,24 @@
-// src/components/sections/Contact/components/SmartContactForm.tsx
-import React, { useState, useEffect, useRef } from 'react';
-import { Send, User, Mail, MessageSquare, Clock, Lightbulb, CheckCircle, AlertCircle, Bot } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { 
+  User, 
+  Mail, 
+  Send, 
+  Bot, 
+  AlertCircle, 
+  CheckCircle, 
+  Clock,
+  Lightbulb,
+  MessageSquare
+} from 'lucide-react';
 import styles from '../Contact.module.css';
 
+// Types - Updated to only include email
 interface ContactFormData {
   name: string;
   email: string;
   inquiryType: 'job' | 'collaboration' | 'consulting' | 'general' | 'other';
   message: string;
-  preferredContact: 'email' | 'phone' | 'linkedin';
-}
-
-interface SmartContactFormProps {
-  isVisible: boolean;
-  animationState?: string;
-  onSubmissionSuccess: (data: ContactFormData) => void;
-  formState?: any;
-  onFormSubmit?: (data: ContactFormData) => Promise<void>;
-  isSubmitting?: boolean;
-  validationErrors?: Record<string, string>;
-  className?: string;
-  style?: React.CSSProperties;
+  preferredContact: 'email'; // Only email option now
 }
 
 interface FormSuggestion {
@@ -28,38 +26,55 @@ interface FormSuggestion {
   type: 'template' | 'improvement' | 'addition';
 }
 
+interface SmartContactFormProps {
+  onSubmissionSuccess: (data: ContactFormData) => void;
+  validationErrors?: Record<string, string>;
+  isVisible: boolean;
+  animationState?: string;
+  formState?: any;
+  onFormSubmit?: (data: ContactFormData) => Promise<void>;
+  isSubmitting?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
 export const SmartContactForm: React.FC<SmartContactFormProps> = ({
+  onSubmissionSuccess,
+  validationErrors = {},
   isVisible,
   animationState,
-  onSubmissionSuccess,
-  isSubmitting = false,
-  validationErrors = {},
+  formState,
+  onFormSubmit,
+  isSubmitting: externalIsSubmitting,
   className = '',
   style
 }) => {
+  // Form state
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     inquiryType: 'general',
     message: '',
-    preferredContact: 'email'
+    preferredContact: 'email' // Default and only option
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [internalErrors, setInternalErrors] = useState<Record<string, string>>({});
+  const [activeField, setActiveField] = useState<string | null>(null);
+  const [formProgress, setFormProgress] = useState(0);
+  const [estimatedResponseTime, setEstimatedResponseTime] = useState('24-48 hours');
   const [suggestions, setSuggestions] = useState<FormSuggestion[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [estimatedResponseTime, setEstimatedResponseTime] = useState('24 hours');
-  const [formProgress, setFormProgress] = useState(0);
-  const [activeField, setActiveField] = useState<string | null>(null);
-  const [internalErrors, setInternalErrors] = useState<Record<string, string>>({});
 
-  const messageRef = useRef<HTMLTextAreaElement>(null);
+  // Use external isSubmitting if provided, otherwise use internal state
+  const actualIsSubmitting = externalIsSubmitting ?? isSubmitting;
 
-  // AI-powered inquiry type templates
-  const inquiryTemplates = {
-    job: "Hi Ankit! I'm reaching out regarding potential job opportunities. I'm particularly interested in your expertise in [specific area]. I'd love to discuss how my skills in [your skills] might align with projects you're working on.",
-    collaboration: "Hello! I'd like to explore a collaboration opportunity. I'm working on [project description] and believe your expertise in [specific skill] would be invaluable. Would you be interested in discussing this further?",
-    consulting: "Hi Ankit, I'm looking for consulting services for [project/company name]. We're facing challenges with [specific problem] and would benefit from your expertise in [relevant area]. Could we schedule a call to discuss?",
-    general: "Hello Ankit! I'm impressed by your work, particularly [specific project/skill]. I'd love to connect and learn more about [specific topic]. Looking forward to hearing from you!",
+  // Message templates for AI suggestions
+  const inquiryTemplates: Record<string, string> = {
+    job: "Hi Ankit! I'm reaching out regarding potential job opportunities. I'm particularly interested in [specific role/field] and believe my background in [your expertise] would be a great fit. I'd love to discuss how we can work together.",
+    collaboration: "Hello Ankit! I have an exciting collaboration opportunity that aligns with your expertise in [specific area]. I think we could create something impactful together. Would you be interested in exploring this further?",
+    consulting: "Hi Ankit! I'm looking for consulting expertise in [specific domain]. Based on your portfolio and experience, I believe you'd be the perfect fit for this project. Let's discuss the details and see how we can move forward.",
+    general: "Hello Ankit! I've been following your work and I'm impressed by [specific project/skill]. I'd love to connect and learn more about your experience. Looking forward to hearing from you!",
     other: "Hi Ankit! I have a unique opportunity/question that I'd like to discuss with you. [Brief description of your inquiry]."
   };
 
@@ -118,14 +133,6 @@ export const SmartContactForm: React.FC<SmartContactFormProps> = ({
         {
           text: template,
           type: 'template'
-        },
-        {
-          text: "Consider mentioning specific projects or skills that interest you",
-          type: 'improvement'
-        },
-        {
-          text: "Include your timeline or urgency level",
-          type: 'addition'
         }
       ]);
       setShowSuggestions(true);
@@ -162,22 +169,49 @@ export const SmartContactForm: React.FC<SmartContactFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('🎯 SmartContactForm handleSubmit called');
+    console.log('📋 Form data:', formData);
     
     // Validate form
     const errors = validateForm(formData);
     if (Object.keys(errors).length > 0) {
+      console.log('❌ Form validation failed:', errors);
       setInternalErrors(errors);
       return;
     }
 
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      onSubmissionSuccess(formData);
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setInternalErrors({ submit: 'Failed to send message. Please try again.' });
+    console.log('✅ Form validation passed');
+
+    // Use external form submit handler if provided
+    if (onFormSubmit) {
+      console.log('📤 Using external onFormSubmit handler');
+      try {
+        await onFormSubmit(formData);
+        console.log('✅ External submit successful');
+        onSubmissionSuccess(formData);
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          inquiryType: 'general',
+          message: '',
+          preferredContact: 'email'
+        });
+      } catch (error) {
+        console.error('❌ External submit failed:', error);
+        setInternalErrors({ 
+          submit: 'Failed to send message. Please try again.' 
+        });
+      }
+      return;
     }
+
+    // Fallback: This shouldn't happen with your current setup
+    console.log('⚠️ No external submit handler provided');
+    setInternalErrors({ 
+      submit: 'Form submission handler not configured.' 
+    });
   };
 
   const isFormValid = formData.name.trim() && 
@@ -306,40 +340,21 @@ export const SmartContactForm: React.FC<SmartContactFormProps> = ({
           </div>
         </div>
 
-        {/* Preferred Contact Method */}
+        {/* Contact Method Info - Updated to show email only */}
         <div className={`${styles.formField} ${styles.fadeInLeft} ${isVisible ? styles.animated : ''}`}
              style={{ animationDelay: '0.4s' }}>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-            Preferred Contact Method
-          </label>
-          <div className="flex gap-4">
-            {[
-              { value: 'email', label: 'Email', icon: Mail },
-              { value: 'phone', label: 'Phone', icon: MessageSquare },
-              { value: 'linkedin', label: 'LinkedIn', icon: MessageSquare }
-            ].map((option) => {
-              const IconComponent = option.icon;
-              return (
-                <label key={option.value} className="flex items-center cursor-pointer">
-                  <input
-                    type="radio"
-                    name="preferredContact"
-                    value={option.value}
-                    checked={formData.preferredContact === option.value}
-                    onChange={(e) => handleInputChange('preferredContact', e.target.value as ContactFormData['preferredContact'])}
-                    className="sr-only"
-                  />
-                  <div className={`flex items-center px-4 py-2 rounded-lg border-2 transition-all duration-300 ${
-                    formData.preferredContact === option.value
-                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
-                      : 'border-gray-200 dark:border-gray-600 hover:border-blue-300'
-                  }`}>
-                    <IconComponent className="w-4 h-4 mr-2" />
-                    <span className="text-sm font-medium">{option.label}</span>
-                  </div>
-                </label>
-              );
-            })}
+          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+            <div className="flex items-center">
+              <Mail className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-3" />
+              <div>
+                <div className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                  Contact Method: Email
+                </div>
+                <div className="text-sm text-blue-600 dark:text-blue-400">
+                  All responses will be sent to your email address
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -348,20 +363,19 @@ export const SmartContactForm: React.FC<SmartContactFormProps> = ({
              style={{ animationDelay: '0.5s' }}>
           <div className="relative">
             <textarea
-              ref={messageRef}
               id="message"
               value={formData.message}
               onChange={(e) => handleInputChange('message', e.target.value)}
               onFocus={() => setActiveField('message')}
               onBlur={() => setActiveField(null)}
-              className={`${styles.formInput} peer min-h-[120px] resize-y`}
+              className={`${styles.formInput} peer resize-none`}
               placeholder=" "
+              rows={6}
               required
-              rows={5}
             />
             <label htmlFor="message" className={styles.formLabel}>
               <MessageSquare className="w-4 h-4 inline mr-2" />
-              Your Message *
+              Your Message * (Min. 10 characters)
             </label>
             
             {/* Character Counter */}
@@ -377,7 +391,7 @@ export const SmartContactForm: React.FC<SmartContactFormProps> = ({
             )}
           </div>
 
-          {/* AI Suggestions Panel */}
+          {/* AI Suggestions */}
           {showSuggestions && suggestions.length > 0 && (
             <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
               <div className="flex items-center mb-3">
@@ -386,17 +400,16 @@ export const SmartContactForm: React.FC<SmartContactFormProps> = ({
                   AI Suggestions
                 </span>
               </div>
-              
               <div className="space-y-2">
                 {suggestions.map((suggestion, index) => (
                   <button
                     key={index}
                     type="button"
                     onClick={() => handleSuggestionClick(suggestion)}
-                    className="block w-full text-left p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300 text-sm"
+                    className="w-full text-left p-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-200"
                   >
                     <div className="flex items-start">
-                      <div className={`w-2 h-2 rounded-full mr-3 mt-2 ${
+                      <div className={`w-3 h-3 rounded-full mt-1 mr-3 ${
                         suggestion.type === 'template' ? 'bg-green-400' :
                         suggestion.type === 'improvement' ? 'bg-yellow-400' :
                         'bg-blue-400'
@@ -407,7 +420,7 @@ export const SmartContactForm: React.FC<SmartContactFormProps> = ({
                            suggestion.type === 'improvement' ? 'Improvement' :
                            'Addition'}
                         </div>
-                        <div className="text-gray-600 dark:text-gray-300">
+                        <div className="text-gray-600 dark:text-gray-300 text-sm">
                           {suggestion.text}
                         </div>
                       </div>
@@ -440,12 +453,12 @@ export const SmartContactForm: React.FC<SmartContactFormProps> = ({
              style={{ animationDelay: '0.7s' }}>
           <button
             type="submit"
-            disabled={!isFormValid || isSubmitting}
+            disabled={!isFormValid || actualIsSubmitting}
             className={`w-full ${styles.primaryButton} ${
-              isFormValid && !isSubmitting ? styles.buttonHover : 'opacity-50 cursor-not-allowed'
-            } ${isSubmitting ? styles.buttonLoading : ''} relative`}
+              isFormValid && !actualIsSubmitting ? styles.buttonHover : 'opacity-50 cursor-not-allowed'
+            } ${actualIsSubmitting ? styles.buttonLoading : ''} relative`}
           >
-            {isSubmitting ? (
+            {actualIsSubmitting ? (
               <div className="flex items-center justify-center">
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
                 Sending Message...

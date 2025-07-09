@@ -13,13 +13,13 @@ import { ContactSuccess } from './components/ContactSuccess';
 import { useContactAnimation } from './hooks/useContactAnimation';
 import { useContactForm } from './hooks/useContactForm';
 
-// Types
+// Types - Update to remove phone/linkedin
 export interface ContactFormData {
   name: string;
   email: string;
   inquiryType: 'job' | 'collaboration' | 'consulting' | 'general' | 'other';
   message: string;
-  preferredContact: 'email' | 'phone' | 'linkedin';
+  preferredContact: 'email'; // Only email now
 }
 
 interface ContactSectionProps {
@@ -45,7 +45,8 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
     formState,
     handleFormSubmit,
     isSubmitting,
-    validationErrors
+    validationErrors,
+    testEmailJS // Get test function from hook
   } = useContactForm();
 
   // Intersection Observer for scroll-triggered animations
@@ -80,6 +81,7 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
 
   // Handle form submission success
   const handleFormSubmissionSuccess = (data: ContactFormData) => {
+    console.log('✅ Form submission success callback called:', data);
     setFormData(data);
     setIsFormSubmitted(true);
     triggerAnimation('success');
@@ -241,15 +243,7 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
                 Direct Email
               </a>
               
-              <a 
-                href="https://linkedin.com/in/ankitanand29"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.tertiaryButton} ${styles.buttonHover}`}
-              >
-                <MessageSquare className="w-5 h-5 mr-2" />
-                LinkedIn
-              </a>
+              {/* Removed LinkedIn button as requested */}
             </div>
           </div>
         </div>
