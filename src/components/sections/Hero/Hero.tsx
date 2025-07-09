@@ -1,17 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Download, ChevronDown } from 'lucide-react';
+import { Download, ChevronDown, Play, Code, Brain } from 'lucide-react';
 import { ContactInfo, SocialLinks } from './components';
-import { FastStaticNameLoopingRoles } from './components/FastLoopingRoles';
-import { FloatingProfilePhoto, AnimatedStats, MagneticButton, ParticleButton } from '../../animations';
-import { MorphingBackground } from '../../animations/MorphingBackground';
+import { 
+  FloatingProfilePhoto, 
+  AnimatedStats, 
+  MagneticButton, 
+  ParticleButton,
+  MorphingBackground,
+  GlitchText,
+  CyberpunkGlitch,
+  AdvancedTypewriter,
+  RoleTypewriter,
+  RevealOnScroll,
+  FadeInUp,
+  FadeInLeft,
+  FadeInRight,
+  StaggerContainer,
+  ParticleExplosion,
+  CyberExplosion,
+  ConfettiExplosion,
+  ScrollProgressIndicator
+} from '../../animations';
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
+  const [showMainContent, setShowMainContent] = useState(false);
+  const [glitchActive, setGlitchActive] = useState(false);
 
   const roles = [
     "Senior Data Scientist",
-    "Machine Learning Engineer",
+    "Machine Learning Engineer", 
     "AI Solutions Architect",
     "Creative Problem Solver",
     "Data Science Instructor"
@@ -24,7 +43,30 @@ const Hero: React.FC = () => {
     { number: "2", label: "Publications", duration: 1500 }
   ];
 
-  // Navigation handlers for React Router
+  const codeSnippets = [
+    "model.fit(X_train, y_train)",
+    "predictions = model.predict(X_test)",
+    "accuracy_score(y_test, predictions)",
+    "from sklearn.ensemble import RandomForestClassifier"
+  ];
+
+  // Auto-trigger glitch effect periodically
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGlitchActive(true);
+      setTimeout(() => setGlitchActive(false), 2000);
+    }, 15000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Show main content after initial load
+  useEffect(() => {
+    const timer = setTimeout(() => setShowMainContent(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Navigation handlers
   const handleViewWork = () => {
     navigate('/projects');
   };
@@ -48,150 +90,317 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"></div>
+      {/* Scroll Progress Indicator */}
+      <ScrollProgressIndicator />
 
-      {/* Morphing Background */}
-      <MorphingBackground intensity="light" />
+      {/* Dynamic Background with Morphing */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+        <MorphingBackground intensity="medium" />
+      </div>
 
-      {/* Animated background particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(30)].map((_, i) => (
+      {/* Advanced Animated Background Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-blue-400 dark:bg-blue-500 rounded-full opacity-20 animate-pulse"
+            className={`absolute rounded-full opacity-30 ${
+              i % 4 === 0 ? 'animate-float' : 
+              i % 4 === 1 ? 'animate-float-delayed' : 
+              i % 4 === 2 ? 'animate-float-slow' : 'animate-pulse-slow'
+            }`}
             style={{
+              width: `${Math.random() * 8 + 4}px`,
+              height: `${Math.random() * 8 + 4}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`
+              backgroundColor: ['#3B82F6', '#8B5CF6', '#EC4899', '#10B981'][i % 4],
+              animationDelay: `${Math.random() * 5}s`
             }}
           />
         ))}
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-          {/* Left Column - Content */}
-          <div className="text-center lg:text-left mb-12 lg:mb-0">
-            <div className="mb-8">
-              {/* Fast Static Name + Looping Roles */}
-              <FastStaticNameLoopingRoles
-                roles={roles}
-                className="mb-8"
+      {/* Scan Lines Effect (Cyberpunk Style) */}
+      <div className="absolute inset-0 pointer-events-none opacity-5">
+        <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-scan-lines"></div>
+      </div>
+
+      {/* Main Content Container */}
+      <div className="relative z-10 container mx-auto px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column - Text Content */}
+          <div className="text-center lg:text-left">
+            
+            {/* Greeting with Advanced Typewriter */}
+            <div className="mb-6">
+              <AdvancedTypewriter
+                texts={["Hello, I'm"]}
+                typingSpeed={80}
+                showCursor={false}
+                loop={false}
+                className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium"
               />
+            </div>
 
-              {/* Description */}
-              <div className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 opacity-0 animate-fadeInUp"
-                style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
-                <p className="mb-2">
-                  6+ years transforming data into actionable insights
-                </p>
-                <p>
-                  Currently @ <span className="font-semibold text-blue-600 dark:text-blue-400">Bosch Global Software Technologies</span>
-                </p>
+            {/* Name with Glitch Effect */}
+            <div className="mb-8">
+              <CyberpunkGlitch
+                text="Ankit Anand"
+                trigger="auto"
+                className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
+              />
+            </div>
+
+            {/* Role Typewriter with Advanced Effects */}
+            <div className="mb-8 h-20 flex items-center justify-center lg:justify-start">
+              <RoleTypewriter
+                roles={roles}
+                className="text-2xl md:text-3xl lg:text-4xl"
+              />
+            </div>
+
+            {/* Description with Stagger Animation */}
+            <div className="mb-8 space-y-4">
+              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
+                6+ years transforming data into actionable insights
+              </p>
+              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
+                Currently @ <GlitchText text="Bosch Global Software Technologies" isActive={glitchActive} />
+              </p>
+            </div>
+
+            {/* Interactive CTA Buttons with Particle Effects */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+              
+              <ParticleButton explosionType="cyber">
+                <MagneticButton
+                  variant="primary"
+                  size="lg"
+                  onClick={handleViewWork}
+                  magnetStrength={0.6}
+                  className="group"
+                >
+                  <Play size={18} className="mr-2 group-hover:animate-spin" />
+                  <span>View My Work</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg"></div>
+                </MagneticButton>
+              </ParticleButton>
+
+              <ParticleButton explosionType="confetti">
+                <MagneticButton
+                  variant="outline"
+                  size="lg"
+                  onClick={handleAIPlayground}
+                  magnetStrength={0.4}
+                  className="group"
+                >
+                  <Brain size={18} className="mr-2 group-hover:animate-pulse" />
+                  <span>AI Playground</span>
+                </MagneticButton>
+              </ParticleButton>
+
+              <ParticleButton explosionType="success">
+                <MagneticButton
+                  variant="secondary"
+                  size="lg"
+                  onClick={handleContact}
+                  magnetStrength={0.3}
+                  className="group"
+                >
+                  <span>Let's Connect</span>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-300"></div>
+                </MagneticButton>
+              </ParticleButton>
+
+            </div>
+
+            {/* Animated Stats with Enhanced Effects */}
+            <div className="mb-8">
+              <AnimatedStats
+                stats={quickStats}
+                className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center lg:text-left"
+                layout="grid"
+              />
+            </div>
+
+            {/* Code Snippet Typewriter */}
+            <div className="mb-8 p-4 bg-gray-900 rounded-lg border border-gray-700">
+              <div className="flex items-center mb-2">
+                <Code size={16} className="text-green-400 mr-2" />
+                <span className="text-green-400 text-sm font-mono">~/ankit-portfolio</span>
               </div>
-
-              {/* Enhanced CTA Buttons with Magnetic Effect */}
-              <div className="opacity-0 animate-fadeInUp"
-                style={{ animationDelay: '3s', animationFillMode: 'forwards' }}>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                  <ParticleButton explosionType="cyber">
-                    <MagneticButton
-                      variant="primary"
-                      size="lg"
-                      onClick={handleViewWork}
-                      className="shadow-lg hover:shadow-xl"
-                    >
-                      <span>View My Work</span>
-                      <svg className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </MagneticButton>
-                  </ParticleButton>
-
-                  <ParticleButton explosionType="cyber">
-                    <MagneticButton
-                      variant="outline"
-                      size="lg"
-                      onClick={handleAIPlayground}
-                      magnetStrength={0.4}
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                      </svg>
-                      <span>AI Playground</span>
-                    </MagneticButton>
-                  </ParticleButton>
-
-                  <ParticleButton explosionType="cyber">
-                    <MagneticButton
-                      variant="secondary"
-                      size="lg"
-                      onClick={handleContact}
-                      magnetStrength={0.2}
-                    >
-                      <span>Let's Connect</span>
-                    </MagneticButton>
-                  </ParticleButton>
-                </div>
-              </div>
-
-              {/* Animated Stats */}
-              <div className="opacity-0 animate-fadeInUp"
-                style={{ animationDelay: '3.5s', animationFillMode: 'forwards' }}>
-                <AnimatedStats
-                  stats={quickStats}
-                  className="mt-8"
-                  layout="grid"
+              <div className="font-mono text-sm">
+                <span className="text-blue-400">$ </span>
+                <AdvancedTypewriter
+                  texts={codeSnippets}
+                  typingSpeed={60}
+                  deletingSpeed={30}
+                  pauseTime={2000}
+                  className="text-green-400"
+                  scrambleEffect={true}
                 />
               </div>
+            </div>
 
-              {/* Contact Info */}
-              <div className="opacity-0 animate-fadeInUp"
-                style={{ animationDelay: '4s', animationFillMode: 'forwards' }}>
-                <ContactInfo className="justify-center lg:justify-start pt-4" />
-              </div>
+            {/* Contact Info and Social Links */}
+            <div className="space-y-4">
+              <ContactInfo className="justify-center lg:justify-start pt-4" />
+              <SocialLinks className="justify-center lg:justify-start pt-4" />
+            </div>
 
-              {/* Social Links */}
-              <div className="opacity-0 animate-fadeInUp"
-                style={{ animationDelay: '4.2s', animationFillMode: 'forwards' }}>
-                <SocialLinks className="justify-center lg:justify-start pt-4" />
-              </div>
-
-              {/* Resume Download */}
-              <div className="pt-4 opacity-0 animate-fadeInUp"
-                style={{ animationDelay: '4.5s', animationFillMode: 'forwards' }}>
-                <button className="inline-flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl font-medium">
-                  <Download size={16} />
+            {/* Resume Download with Particle Effect */}
+            <div className="pt-6">
+              <ParticleButton explosionType="sparkle">
+                <MagneticButton
+                  variant="secondary"
+                  size="lg"
+                  magnetStrength={0.3}
+                  className="group bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 shadow-lg hover:shadow-xl"
+                >
+                  <Download size={16} className="mr-2 group-hover:animate-bounce" />
                   <span>Download Resume</span>
-                </button>
+                </MagneticButton>
+              </ParticleButton>
+            </div>
+
+          </div>
+
+          {/* Right Column - Enhanced Profile Photo */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative">
+              <FloatingProfilePhoto
+                src="/images/profile.jpg"
+                alt="Ankit Anand - Senior Data Scientist"
+                size="xl"
+                className="transform hover:scale-105 transition-transform duration-500"
+              />
+              
+              {/* Additional Floating Elements */}
+              <div className="absolute -top-4 -right-4">
+                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse opacity-75"></div>
+              </div>
+              
+              <div className="absolute -bottom-6 -left-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full animate-float opacity-60"></div>
+              </div>
+
+              {/* Particle Explosion Trigger on Hover */}
+              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <ConfettiExplosion trigger={false} />
               </div>
             </div>
           </div>
+          
+        </div>
 
-          {/* Right Column - Floating Profile Photo */}
-          <div className="flex justify-center lg:justify-end opacity-0 animate-fadeInRight"
-            style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
-            <FloatingProfilePhoto
-              src="/images/profile.jpg"
-              alt="Ankit Anand - Senior Data Scientist"
-              size="xl"
-            />
+        {/* Enhanced Scroll Indicator with Multiple Animations */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          
+          {/* Animated Portfolio Preview Icons */}
+          <div className="flex justify-center space-x-8 mb-6">
+            {/* Floating Tech Icons */}
+            <div className="relative">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center animate-float opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <Brain size={20} className="text-white animate-pulse" />
+              </div>
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
+            </div>
+
+            <div className="relative">
+              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center animate-float-delayed opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <Code size={20} className="text-white animate-pulse" />
+              </div>
+              <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+            </div>
+
+            <div className="relative">
+              <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center animate-float-slow opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <svg className="w-5 h-5 text-white animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-400 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+            </div>
           </div>
+
+          {/* Glowing Connection Lines */}
+          <div className="flex justify-center items-center mb-4">
+            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pulse"></div>
+            <div className="mx-4 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
+            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-pulse" style={{animationDelay: '0.5s'}}></div>
+          </div>
+
+          {/* Main Scroll Button with Enhanced Effects */}
+          <ParticleButton explosionType="cyber">
+            <MagneticButton
+              variant="ghost"
+              onClick={handleScrollDown}
+              magnetStrength={0.3}
+              className="relative group flex flex-col items-center space-y-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
+            >
+              {/* Pulsing Ring Around Button */}
+              <div className="absolute inset-0 rounded-full border-2 border-blue-400 opacity-0 group-hover:opacity-100 animate-ping"></div>
+              <div className="absolute inset-0 rounded-full border border-purple-400 opacity-0 group-hover:opacity-75 animate-pulse"></div>
+              
+              {/* Text with Typewriter Effect */}
+              <span className="text-sm font-medium group-hover:animate-pulse relative z-10">
+                <GlitchText 
+                  text="Explore Portfolio" 
+                  trigger="hover"
+                  className="group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400"
+                />
+              </span>
+              
+              {/* Animated Arrow with Multiple Effects */}
+              <div className="relative z-10">
+                <ChevronDown size={24} className="animate-bounce group-hover:animate-ping transition-all duration-300" />
+                
+                {/* Trail Effect */}
+                <ChevronDown size={24} className="absolute inset-0 animate-bounce opacity-30 group-hover:opacity-60" style={{animationDelay: '0.1s'}} />
+                <ChevronDown size={24} className="absolute inset-0 animate-bounce opacity-20 group-hover:opacity-40" style={{animationDelay: '0.2s'}} />
+              </div>
+
+              {/* Floating Particles Around Button */}
+              <div className="absolute inset-0 pointer-events-none">
+                {[...Array(6)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      left: `${20 + Math.cos(i * 60 * Math.PI / 180) * 30}px`,
+                      top: `${20 + Math.sin(i * 60 * Math.PI / 180) * 30}px`,
+                      animation: `float ${2 + i * 0.5}s ease-in-out infinite`,
+                      animationDelay: `${i * 0.1}s`
+                    }}
+                  />
+                ))}
+              </div>
+            </MagneticButton>
+          </ParticleButton>
+
+          {/* Progress Indicators */}
+          <div className="flex justify-center mt-4 space-x-2">
+            {[...Array(4)].map((_, i) => (
+              <div
+                key={i}
+                className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full animate-pulse"
+                style={{
+                  animationDelay: `${i * 0.2}s`,
+                  opacity: i === 0 ? 1 : 0.5
+                }}
+              />
+            ))}
+          </div>
+
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 animate-fadeInUp"
-          style={{ animationDelay: '5s', animationFillMode: 'forwards' }}>
-          <button
-            onClick={handleScrollDown}
-            className="flex flex-col items-center space-y-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 animate-bounce"
-          >
-            <span className="text-sm font-medium">Scroll to explore</span>
-            <ChevronDown size={24} />
-          </button>
+        {/* Invisible Particle Effects for Ambiance */}
+        <div className="absolute inset-0 pointer-events-none">
+          <CyberExplosion trigger={false} />
+          <ParticleExplosion trigger={false} />
         </div>
+
       </div>
     </section>
   );
