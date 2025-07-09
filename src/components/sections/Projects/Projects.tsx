@@ -3,8 +3,33 @@ import { ProjectCard } from './components/ProjectCard';
 import { ProjectFilter } from './components/ProjectFilter';
 import { FeaturedProject } from './components/FeaturedProject';
 import { ProjectModal } from './components/ProjectModal';
-import styles from './Projects.module.css';
-import { Rocket, Target, Code, Brain } from 'lucide-react';
+import { 
+  FolderOpen, 
+  Code, 
+  Brain, 
+  Zap, 
+  TrendingUp,
+  Target,
+  Award,
+  Users,
+  Building,
+  Calendar
+} from 'lucide-react';
+import { 
+  RevealOnScroll, 
+  FadeInUp, 
+  FadeInLeft, 
+  FadeInRight,
+  StaggerContainer,
+  SectionReveal,
+  AnimatedStats,
+  MagneticButton,
+  ParticleButton,
+  GlitchText,
+  MorphingBackground,
+  CyberpunkGlitch,
+  AdvancedTypewriter
+} from '../../animations';
 
 export interface ProjectData {
   id: string;
@@ -12,379 +37,433 @@ export interface ProjectData {
   description: string;
   longDescription: string;
   category: 'machine-learning' | 'web-development' | 'data-analysis' | 'computer-vision' | 'current';
+  status: 'completed' | 'ongoing' | 'research';
   technologies: string[];
+  duration: string;
+  company: string;
   achievements: string[];
   metrics?: {
     label: string;
     value: string;
     type: 'accuracy' | 'performance' | 'scale' | 'impact';
   }[];
-  status: 'completed' | 'ongoing' | 'research';
-  duration: string;
-  company: string;
-  featured: boolean;
+  impact?: string;
   demoUrl?: string;
   githubUrl?: string;
-  images?: string[];
-  challenges: string[];
-  solutions: string[];
-  impact: string;
+  caseStudyUrl?: string;
+  imageUrl?: string;
+  featured?: boolean;
 }
 
 const projectsData: ProjectData[] = [
   {
-    id: 'sensor-analytics',
-    title: 'Advanced Sensor Data Analytics Platform',
-    description: 'In-depth analysis of humidity effects in Inertial sensors using higher dimension analysis tools and advanced outlier detection.',
-    longDescription: 'Comprehensive sensor data analytics platform for analyzing humidity effects in Inertial sensors at Bosch. Implemented advanced dimensionality reduction techniques and sophisticated outlier detection algorithms to identify patterns and anomalies in sensor data.',
-    category: 'current',
-    technologies: ['Python', 'PCA', 'UMAP', 'Tree Classifiers', 'RANSAC', 'Clustering', 'Tableau', 'Anomaly Detection'],
-    achievements: [
-      'Implemented higher dimension analysis using PCA and UMAP',
-      'Developed comprehensive outlier detection system',
-      'Created interactive Tableau dashboards for KPI monitoring',
-      'Established automated anomaly detection pipeline'
-    ],
-    metrics: [
-      { label: 'Sensors Analyzed', value: '1000+', type: 'scale' },
-      { label: 'Detection Accuracy', value: '95%', type: 'accuracy' },
-      { label: 'Processing Speed', value: '10x faster', type: 'performance' }
-    ],
-    status: 'ongoing',
-    duration: 'Sep 2023 - Present',
-    company: 'Bosch Global Software Technologies',
-    featured: true,
-    challenges: [
-      'High-dimensional sensor data complexity',
-      'Real-time processing requirements',
-      'Multiple anomaly detection approaches needed'
-    ],
-    solutions: [
-      'Implemented PCA and UMAP for dimensionality reduction',
-      'Used ensemble of tree-based classifiers and unsupervised methods',
-      'Created automated pipeline with Tableau integration'
-    ],
-    impact: 'Improved sensor quality control and reduced defect rates in production'
-  },
-  {
-    id: 'steel-price-forecasting',
+    id: 'steel-forecasting',
     title: 'Steel Price Forecasting System',
-    description: 'Advanced time series forecasting model for predicting alloy prices with 90% confidence intervals, achieving 23% MAPE.',
-    longDescription: 'Developed a comprehensive price forecasting system for direct materials used in steel manufacturing. The system integrates multiple APIs, performs advanced time series analysis, and provides accurate price predictions with confidence intervals.',
+    description: 'Advanced time series analysis for Gerdau steel manufacturing, achieving 90% confidence intervals with 23% MAPE accuracy.',
+    longDescription: 'Developed a comprehensive forecasting model for direct materials used in steel manufacturing. The system analyzes trends, seasonality, and auto-correlation while identifying historical anomalies and change points.',
     category: 'machine-learning',
-    technologies: ['Python', 'Time Series Analysis', 'Matplotlib', 'Seaborn', 'Statsmodels', 'APIs', 'Streamlit', 'SQL'],
+    status: 'completed',
+    technologies: ['Python', 'Statsmodels', 'Streamlit', 'APIs', 'Time Series Analysis', 'Pandas', 'NumPy'],
+    duration: 'April 2023 - August 2023',
+    company: 'Innova Solutions (Gerdau)',
     achievements: [
-      'Achieved 23% MAPE in price forecasting',
-      'Built 90% confidence interval predictions',
-      'Identified 3 historical anomalies related to market events',
-      'Created interactive Streamlit dashboard'
+      'Achieved 23% MAPE accuracy in price forecasting',
+      'Identified 3 historical anomalies with 90% confidence intervals',
+      'Optimized procurement decisions saving significant costs'
     ],
     metrics: [
-      { label: 'MAPE Achievement', value: '23%', type: 'accuracy' },
-      { label: 'Confidence Interval', value: '90%', type: 'accuracy' },
-      { label: 'Historical Anomalies', value: '3 detected', type: 'impact' }
+      {
+        label: 'MAPE Accuracy',
+        value: '23%',
+        type: 'accuracy'
+      },
+      {
+        label: 'Confidence Interval',
+        value: '90%',
+        type: 'performance'
+      }
     ],
-    status: 'completed',
-    duration: 'Apr 2023 - Aug 2023',
-    company: 'Innova Solutions (Gerdau)',
-    featured: true,
-    challenges: [
-      'Complex market dynamics affecting steel prices',
-      'Multiple data sources with varying formats',
-      'Need for real-time price analysis'
-    ],
-    solutions: [
-      'Implemented robust time series analysis with seasonality detection',
-      'Created unified API integration system',
-      'Built automated anomaly detection for market events'
-    ],
-    impact: 'Enabled strategic procurement decisions saving millions in material costs'
+    impact: 'Revolutionized steel procurement decisions with advanced forecasting, enabling proactive cost management and supply chain optimization.',
+    featured: true
   },
   {
-    id: 'healthcare-treatment-ai',
-    title: 'AI-Powered Healthcare Treatment Recommender',
-    description: 'Intelligent system predicting hospitalization risk and recommending treatment plans with 82% accuracy using similarity algorithms.',
-    longDescription: 'Developed a sophisticated healthcare AI system that analyzes patient data to predict hospitalization risks and recommend personalized treatment plans. Uses advanced similarity search algorithms and custom scoring methods on historical patient records.',
+    id: 'shipment-predictor',
+    title: 'Shipment Delay Predictor',
+    description: 'ML model predicting logistics delays with 93% accuracy, optimizing supply chain operations.',
+    longDescription: 'Built an end-to-end machine learning pipeline to predict shipment delays in logistics operations, incorporating multiple data sources and real-time tracking.',
     category: 'machine-learning',
-    technologies: ['Python', 'K-NN', 'Custom Algorithms', 'Similarity Search', 'Distance Metrics', 'Feature Selection', 'Matplotlib', 'Seaborn'],
+    status: 'completed',
+    technologies: ['Python', 'Scikit-learn', 'XGBoost', 'Feature Engineering', 'Data Preprocessing'],
+    duration: 'July 2022 - March 2023',
+    company: 'Innova Solutions',
     achievements: [
-      '82% accuracy in treatment recommendations',
-      'Minimum 7 treatments per plan optimization',
-      'Advanced feature selection implementation',
-      'Real-time risk assessment capability'
+      '93% accuracy in delay prediction',
+      'Reduced operational costs by 15%',
+      'Improved customer satisfaction scores'
     ],
     metrics: [
-      { label: 'Treatment Accuracy', value: '82%', type: 'accuracy' },
-      { label: 'Patients Analyzed', value: '10,000+', type: 'scale' },
-      { label: 'Risk Reduction', value: '35%', type: 'impact' }
+      {
+        label: 'Prediction Accuracy',
+        value: '93%',
+        type: 'accuracy'
+      },
+      {
+        label: 'Cost Reduction',
+        value: '15%',
+        type: 'impact'
+      }
     ],
-    status: 'completed',
-    duration: 'Oct 2020 - Mar 2023',
-    company: 'Innova Solutions (TMC)',
-    featured: false,
-    challenges: [
-      'Complex patient data with missing values',
-      'Need for explainable AI in healthcare',
-      'Real-time processing for critical decisions'
-    ],
-    solutions: [
-      'Implemented robust K-NN with custom distance metrics',
-      'Created interpretable similarity-based recommendations',
-      'Built efficient feature selection pipeline'
-    ],
-    impact: 'Improved patient outcomes and reduced hospital readmission rates'
+    impact: 'Transformed logistics operations with predictive analytics, significantly reducing delays and improving customer satisfaction across the supply chain.',
+    featured: true
   },
   {
-    id: 'supply-chain-prediction',
-    title: 'Supply Chain Delay Prediction System',
-    description: 'Machine learning system predicting shipment delays with 93% accuracy, reducing logistics losses through anomaly detection.',
-    longDescription: 'Comprehensive supply chain analytics platform that predicts shipment delays and identifies anomalies in transportation operations. Includes advanced EDA, predictive modeling, and third-party vendor analysis.',
+    id: 'patient-risk',
+    title: 'Patient Risk Assessment',
+    description: 'Healthcare ML model identifying high-risk patients with 82% accuracy for Humana.',
+    longDescription: 'Developed a sophisticated risk assessment model for healthcare domain, applying advanced preprocessing techniques and feature engineering to identify patients requiring immediate attention.',
     category: 'machine-learning',
-    technologies: ['Python', 'Logistic Regression', 'Pandas', 'NumPy', 'Seaborn', 'Plotly', 'EDA', 'Flask', 'Anomaly Detection'],
+    status: 'completed',
+    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Feature Engineering', 'Classification', 'Healthcare Analytics'],
+    duration: 'July 2022 - March 2023',
+    company: 'Innova Solutions (Humana)',
     achievements: [
-      '93% accuracy in shipment delay prediction',
-      'Significant reduction in logistics losses',
-      'Comprehensive EDA and visualization suite',
-      'Automated anomaly detection for vendor analysis'
+      '82% accuracy in patient risk prediction',
+      'Early intervention for high-risk patients',
+      'Improved healthcare outcomes'
     ],
     metrics: [
-      { label: 'Prediction Accuracy', value: '93%', type: 'accuracy' },
-      { label: 'Cost Savings', value: '$2M+', type: 'impact' },
-      { label: 'Shipments Analyzed', value: '100K+', type: 'scale' }
+      {
+        label: 'Risk Prediction',
+        value: '82%',
+        type: 'accuracy'
+      },
+      {
+        label: 'Early Interventions',
+        value: '150+',
+        type: 'scale'
+      }
     ],
-    status: 'completed',
-    duration: 'Oct 2020 - Mar 2023',
-    company: 'Innova Solutions (Gerdau)',
-    featured: true,
-    challenges: [
-      'Complex logistics network with multiple variables',
-      'Real-time prediction requirements',
-      'Third-party vendor data integration'
-    ],
-    solutions: [
-      'Implemented robust logistic regression with feature engineering',
-      'Created comprehensive anomaly detection system',
-      'Built automated reporting and alerting system'
-    ],
-    impact: 'Reduced logistics costs by 15% and improved delivery reliability'
+    impact: 'Enhanced healthcare delivery through predictive analytics, enabling early intervention and improved patient outcomes in critical care scenarios.'
   },
   {
     id: 'library-automation',
-    title: 'Smart Library Automation System',
-    description: 'Innovative facial recognition system with QR code integration for automated library check-in/check-out operations.',
-    longDescription: 'Revolutionary library management system combining state-of-the-art facial recognition technology with QR code scanning for seamless book tracking. Features automated check-in/check-out, user identification, and comprehensive inventory management.',
+    title: 'Library Automation System',
+    description: 'Face recognition + QR code system revolutionizing library management with computer vision.',
+    longDescription: 'Comprehensive library management system combining facial recognition technology with QR code scanning for seamless book tracking and user management.',
     category: 'computer-vision',
-    technologies: ['Python', 'Computer Vision', 'Facial Recognition', 'Pyzbar', 'QR Codes', 'Flask', 'SQL Database', 'OpenCV'],
+    status: 'completed',
+    technologies: ['Python', 'OpenCV', 'Face Recognition', 'QR Code', 'Computer Vision', 'Database Management'],
+    duration: 'September 2019 - June 2022',
+    company: 'Innova Solutions (Walmart)',
     achievements: [
-      'Implemented state-of-the-art facial recognition',
-      'QR code integration for book tracking',
-      'Automated check-in/check-out system',
-      'Real-time inventory management'
+      'Automated library operations',
+      'Reduced manual processing time by 70%',
+      'Enhanced security and tracking'
     ],
     metrics: [
-      { label: 'Recognition Accuracy', value: '98%', type: 'accuracy' },
-      { label: 'Processing Time', value: '<2 seconds', type: 'performance' },
-      { label: 'User Satisfaction', value: '95%', type: 'impact' }
+      {
+        label: 'Time Saved',
+        value: '70%',
+        type: 'performance'
+      },
+      {
+        label: 'Books Processed',
+        value: '5000+',
+        type: 'scale'
+      }
     ],
-    status: 'completed',
-    duration: 'Oct 2020 - Mar 2023',
-    company: 'Innova Solutions',
-    featured: false,
-    challenges: [
-      'Real-time facial recognition accuracy',
-      'Integration of multiple identification methods',
-      'Scalable system architecture'
-    ],
-    solutions: [
-      'Implemented advanced facial recognition algorithms',
-      'Created hybrid QR code and biometric system',
-      'Built modular backend architecture with Flask'
-    ],
-    impact: 'Reduced manual processing time by 80% and improved user experience'
+    impact: 'Modernized library management with cutting-edge computer vision technology, streamlining operations and enhancing user experience.'
   },
   {
-    id: 'retail-platform',
-    title: 'Enterprise Retail Shopping Platform',
-    description: 'Full-stack enterprise retail application with microservices architecture, featuring modern web technologies and RESTful APIs.',
-    longDescription: 'Comprehensive retail shopping platform built with modern web technologies and microservices architecture. Features include user management, product catalog, shopping cart functionality, and sales analytics with responsive design.',
-    category: 'web-development',
-    technologies: ['Spring MVC', 'React', 'Spring Boot', 'HTML', 'CSS', 'Backbone.js', 'Git', 'REST APIs', 'Microservices', 'Java'],
+    id: 'sensor-humidity-analysis',
+    title: 'Sensor Humidity Analysis Suite',
+    description: 'PCA & UMAP analysis for Bosch inertial sensors with advanced outlier detection algorithms.',
+    longDescription: 'Performed in-depth analysis for humidity-affected parts in inertial sensors using high-dimensional analysis tools and sophisticated anomaly detection techniques.',
+    category: 'data-analysis',
+    status: 'ongoing',
+    technologies: ['Python', 'PCA', 'UMAP', 'Tree Classifiers', 'RANSAC', 'Tableau', 'Clustering', 'Anomaly Detection'],
+    duration: 'September 2023 - Present',
+    company: 'Bosch Global Software Technologies',
     achievements: [
-      'Full-stack web application development',
-      'Microservices architecture implementation',
-      'RESTful API design and development',
-      'Responsive front-end with modern frameworks'
+      'Advanced sensor data analytics implementation',
+      'Comprehensive outlier detection system',
+      'Multi-product KPI dashboard suite'
     ],
     metrics: [
-      { label: 'Users Supported', value: '50,000+', type: 'scale' },
-      { label: 'API Response Time', value: '<200ms', type: 'performance' },
-      { label: 'Uptime', value: '99.9%', type: 'performance' }
+      {
+        label: 'Outlier Detection',
+        value: '95%+',
+        type: 'accuracy'
+      },
+      {
+        label: 'Products Analyzed',
+        value: '12',
+        type: 'scale'
+      }
     ],
-    status: 'completed',
-    duration: 'Aug 2018 - Sep 2020',
-    company: 'Innova Solutions (HCSC)',
-    featured: false,
-    challenges: [
-      'Scalable microservices architecture',
-      'Frontend-backend integration',
-      'High-performance API development'
+    impact: 'Pioneering sensor analytics platform enabling predictive maintenance and quality optimization across Bosch inertial sensor product lines.',
+    featured: true
+  },
+  {
+    id: 'kpi-dashboard',
+    title: 'KPI Dashboard System',
+    description: 'Interactive Tableau dashboards analyzing performance metrics across multiple Bosch products.',
+    longDescription: 'Designed and developed comprehensive KPI performance dashboards for various products, providing real-time insights and analytics capabilities.',
+    category: 'data-analysis',
+    status: 'ongoing',
+    technologies: ['Tableau', 'Data Visualization', 'KPI Analytics', 'Dashboard Design', 'Business Intelligence'],
+    duration: 'September 2023 - Present',
+    company: 'Bosch Global Software Technologies',
+    achievements: [
+      'Real-time performance monitoring',
+      'Cross-product analytics integration',
+      'Enhanced decision-making capabilities'
     ],
-    solutions: [
-      'Implemented Spring Boot microservices',
-      'Created modern React-based frontend',
-      'Built comprehensive REST API layer'
+    metrics: [
+      {
+        label: 'KPI Dashboards',
+        value: '8',
+        type: 'scale'
+      },
+      {
+        label: 'Real-time Updates',
+        value: '99.9%',
+        type: 'performance'
+      }
     ],
-    impact: 'Supported enterprise retail operations with high performance and reliability'
+    impact: 'Comprehensive business intelligence platform providing real-time insights and analytics across multiple Bosch product lines.'
   }
 ];
 
-export const Projects: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
+type CategoryType = 'all' | 'machine-learning' | 'web-development' | 'data-analysis' | 'computer-vision' | 'current';
 
+export const Projects: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState<CategoryType>('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
+
+  // Filter projects based on category and search term
   const filteredProjects = projectsData.filter(project => {
     const matchesCategory = selectedCategory === 'all' || project.category === selectedCategory;
-    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         project.technologies.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchesSearch = searchTerm === '' || 
+      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.technologies.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
+    
     return matchesCategory && matchesSearch;
   });
 
+  // Get featured projects
   const featuredProjects = projectsData.filter(project => project.featured);
+  
+  // Get regular projects (non-featured)
   const regularProjects = filteredProjects.filter(project => !project.featured);
 
-  const getProjectStats = () => {
-    const completed = projectsData.filter(p => p.status === 'completed').length;
-    const ongoing = projectsData.filter(p => p.status === 'ongoing').length;
-
-    const allTechnologies = projectsData.flatMap(p => p.technologies);
-    const uniqueTechnologies = allTechnologies.reduce((unique: string[], tech: string) => {
-      if (!unique.includes(tech)) {
-        unique.push(tech);
-      }
-      return unique;
-    }, []);
-    const totalTechnologies = uniqueTechnologies.length;
-    
-    return { completed, ongoing, totalTechnologies, total: projectsData.length };
+  // Calculate stats
+  const stats = {
+    total: projectsData.length,
+    completed: projectsData.filter(p => p.status === 'completed').length,
+    ongoing: projectsData.filter(p => p.status === 'ongoing').length,
+    totalTechnologies: Array.from(new Set(projectsData.flatMap(p => p.technologies))).length
   };
 
-  const stats = getProjectStats();
+  // Stats for animated counter
+  const projectStats = [
+    { number: stats.total.toString(), label: "Projects", color: "text-blue-600 dark:text-blue-400" },
+    { number: stats.completed.toString(), label: "Completed", color: "text-green-600 dark:text-green-400" },
+    { number: stats.ongoing.toString(), label: "Active", color: "text-orange-600 dark:text-orange-400" },
+    { number: stats.totalTechnologies.toString(), label: "Technologies", color: "text-purple-600 dark:text-purple-400" }
+  ];
 
   return (
-    <section id="projects" className={styles.projectsSection}>
-      <div className="max-w-7xl mx-auto px-4 py-20">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Project Portfolio
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Showcasing innovative solutions across machine learning, data analytics, web development, 
-            and computer vision with real-world impact and measurable results.
-          </p>
-        </div>
+    <section id="projects" className="relative min-h-screen py-20 overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+        <MorphingBackground intensity="light" />
+      </div>
 
-        {/* Portfolio Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <Rocket className="w-8 h-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{stats.total}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Total Projects</div>
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(18)].map((_, i) => (
+          <div
+            key={i}
+            className={`absolute rounded-full opacity-20 ${
+              i % 3 === 0 ? 'animate-float' : 
+              i % 3 === 1 ? 'animate-float-delayed' : 'animate-float-slow'
+            } ${
+              i % 4 === 0 ? 'bg-blue-400 dark:bg-blue-600' :
+              i % 4 === 1 ? 'bg-purple-400 dark:bg-purple-600' :
+              i % 4 === 2 ? 'bg-green-400 dark:bg-green-600' :
+              'bg-orange-400 dark:bg-orange-600'
+            }`}
+            style={{
+              width: `${Math.random() * 50 + 25}px`,
+              height: `${Math.random() * 50 + 25}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 container mx-auto px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <SectionReveal className="text-center mb-16">
+          <div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <CyberpunkGlitch
+                text="Project Portfolio"
+                trigger="auto"
+                className="bg-gradient-to-r from-gray-900 via-blue-600 to-purple-600 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+              />
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <AdvancedTypewriter
+                texts={[
+                  "Innovative solutions with real-world impact and measurable results. From machine learning models to data analytics platforms, each project represents a journey of problem-solving and technical excellence."
+                ]}
+                typingSpeed={45}
+                loop={false}
+                className="text-xl text-gray-600 dark:text-gray-300"
+              />
+            </div>
           </div>
-          
-          <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <Target className="w-8 h-8 text-green-600 dark:text-green-400 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{stats.completed}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Completed</div>
-          </div>
-          
-          <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <Brain className="w-8 h-8 text-purple-600 dark:text-purple-400 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{stats.ongoing}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Ongoing</div>
-          </div>
-          
-          <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <Code className="w-8 h-8 text-orange-600 dark:text-orange-400 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{stats.totalTechnologies}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Technologies</div>
-          </div>
-        </div>
+        </SectionReveal>
+
+        {/* Project Stats */}
+        <FadeInUp>
+          <AnimatedStats 
+            stats={projectStats}
+            layout="grid"
+            className="max-w-4xl mx-auto mb-16"
+          />
+        </FadeInUp>
 
         {/* Project Filter */}
-        <ProjectFilter
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-          projects={projectsData}
-        />
+        <FadeInUp>
+          <ProjectFilter
+            selectedCategory={selectedCategory}
+            onCategoryChange={(category: string) => setSelectedCategory(category as CategoryType)}
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+            projects={projectsData}
+          />
+        </FadeInUp>
 
         {/* Featured Projects */}
         {selectedCategory === 'all' && featuredProjects.length > 0 && (
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Featured Projects</h3>
-            <div className="grid gap-8">
-              {featuredProjects.map((project, index) => (
-                <FeaturedProject
-                  key={project.id}
-                  project={project}
-                  isReversed={index % 2 === 1}
-                  onViewDetails={() => setSelectedProject(project)}
-                />
-              ))}
-            </div>
+            <FadeInUp>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+                Featured Projects
+              </h3>
+            </FadeInUp>
+            <StaggerContainer staggerDelay={200}>
+              <div className="space-y-12">
+                {featuredProjects.map((project, index) => (
+                  <FadeInUp key={project.id}>
+                    <FeaturedProject
+                      project={project}
+                      isReversed={index % 2 === 1}
+                      onViewDetails={() => setSelectedProject(project)}
+                    />
+                  </FadeInUp>
+                ))}
+              </div>
+            </StaggerContainer>
           </div>
         )}
 
         {/* Regular Projects Grid */}
         <div className="mb-8">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-            {selectedCategory === 'all' ? 'All Projects' : 'Filtered Projects'}
-            <span className="text-lg font-normal text-gray-500 ml-2">
-              ({filteredProjects.length})
-            </span>
-          </h3>
+          <FadeInUp>
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+              {selectedCategory === 'all' ? 'All Projects' : 'Filtered Projects'}
+              <span className="text-lg font-normal text-gray-500 ml-2">
+                ({filteredProjects.length})
+              </span>
+            </h3>
+          </FadeInUp>
           
           {filteredProjects.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {(selectedCategory === 'all' ? regularProjects : filteredProjects).map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  onViewDetails={() => setSelectedProject(project)}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <div className="text-gray-400 dark:text-gray-500 mb-4">
-                <Target className="w-16 h-16 mx-auto mb-4" />
-                <p className="text-lg">No projects found matching your criteria.</p>
-                <p className="text-sm">Try adjusting your search or category filter.</p>
+            <StaggerContainer staggerDelay={150}>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {(selectedCategory === 'all' ? regularProjects : filteredProjects).map((project, index) => (
+                  <FadeInUp key={project.id}>
+                    <ProjectCard
+                      project={project}
+                      onViewDetails={() => setSelectedProject(project)}
+                    />
+                  </FadeInUp>
+                ))}
               </div>
-            </div>
+            </StaggerContainer>
+          ) : (
+            <FadeInUp>
+              <div className="text-center py-16">
+                <FolderOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  No projects found
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  Try adjusting your filters or search terms.
+                </p>
+                <MagneticButton
+                  variant="outline"
+                  onClick={() => {
+                    setSelectedCategory('all');
+                    setSearchTerm('');
+                  }}
+                  magnetStrength={0.3}
+                >
+                  Clear Filters
+                </MagneticButton>
+              </div>
+            </FadeInUp>
           )}
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16 p-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Interested in Collaboration?
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-            These projects represent just a glimpse of what's possible when data science meets innovation. 
-            Let's discuss how we can create impactful solutions together.
-          </p>
-          <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors duration-200">
-            Get In Touch
-          </button>
-        </div>
+        <FadeInUp>
+          <div className="text-center space-y-6 mt-16">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Ready to Build Something Amazing?
+            </h3>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Let's collaborate on your next data science or machine learning project.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <ParticleButton explosionType="confetti">
+                <MagneticButton
+                  variant="primary"
+                  size="lg"
+                  magnetStrength={0.5}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                >
+                  <Target className="w-5 h-5 mr-2" />
+                  <span>Start a Project</span>
+                </MagneticButton>
+              </ParticleButton>
+
+              <ParticleButton explosionType="cyber">
+                <MagneticButton
+                  variant="outline"
+                  size="lg"
+                  magnetStrength={0.3}
+                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+                >
+                  <Brain className="w-5 h-5 mr-2" />
+                  <span>Explore AI Labs</span>
+                </MagneticButton>
+              </ParticleButton>
+            </div>
+          </div>
+        </FadeInUp>
       </div>
 
-      {/* Project Detail Modal */}
+      {/* Project Modal */}
       {selectedProject && (
         <ProjectModal
           project={selectedProject}
