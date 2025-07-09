@@ -56,39 +56,6 @@ export const ContactMethods: React.FC<ContactMethodsProps> = ({
 
   return (
     <div className={`${className} space-y-6`} style={style}>
-      {/* Social Links Header */}
-      <div className={`${styles.contactCard} text-center`}>
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-          Connect Across Platforms
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300 text-sm mb-6">
-          Choose your preferred platform to connect and stay updated
-        </p>
-        
-        {/* Social Links Grid */}
-        <div className="grid grid-cols-2 gap-4">
-          {socialLinks.map((link, index) => {
-            const IconComponent = link.icon;
-            return (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.fadeInUp} ${isVisible ? styles.animated : ''} group`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className={`${link.color} rounded-lg p-4 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg`}>
-                  <IconComponent className="w-6 h-6 text-white mx-auto mb-2" />
-                  <div className="text-white font-medium text-sm">{link.name}</div>
-                  <div className="text-white/80 text-xs">{link.description}</div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </div>
-
       {/* Quick Actions */}
       <div className={`${styles.contactCard} ${styles.fadeInUp} ${isVisible ? styles.animated : ''}`}
            style={{ animationDelay: '0.4s' }}>

@@ -156,32 +156,6 @@ export const ContactHero: React.FC<ContactHeroProps> = ({
           <ArrowDown className="w-6 h-6 animate-bounce group-hover:scale-110 transition-transform" />
         </button>
       </div>
-
-      {/* Floating Action Hint */}
-      <div className="absolute top-1/2 left-8 transform -translate-y-1/2 hidden lg:block">
-        <div className={`${styles.fadeInLeft} ${isVisible ? styles.animated : ''} bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg max-w-xs`}
-             style={{ animationDelay: '1.2s' }}>
-          <div className="flex items-center">
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse mr-3"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-300">
-              Available for new opportunities
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Contact Preference Hint */}
-      <div className="absolute top-1/2 right-8 transform -translate-y-1/2 hidden lg:block">
-        <div className={`${styles.fadeInRight} ${isVisible ? styles.animated : ''} bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg max-w-xs`}
-             style={{ animationDelay: '1.4s' }}>
-          <div className="flex items-center">
-            <MessageSquare className="w-4 h-4 text-blue-500 mr-3" />
-            <span className="text-sm text-gray-600 dark:text-gray-300">
-              Prefer detailed project discussions
-            </span>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
