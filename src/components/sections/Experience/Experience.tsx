@@ -3,7 +3,33 @@ import { Timeline } from './components/Timeline';
 import { JobCard } from './components/JobCard';
 import { SkillTags } from './components/SkillTags';
 import styles from './Experience.module.css';
-import { Briefcase, Calendar, MapPin, TrendingUp } from 'lucide-react';
+import { 
+  Briefcase, 
+  Calendar, 
+  MapPin, 
+  Target, 
+  TrendingUp, 
+  Code, 
+  Award,
+  Users,
+  Building,
+  Zap
+} from 'lucide-react';
+import { 
+  RevealOnScroll, 
+  FadeInUp, 
+  FadeInLeft, 
+  FadeInRight,
+  StaggerContainer,
+  SectionReveal,
+  AnimatedStats,
+  MagneticButton,
+  ParticleButton,
+  GlitchText,
+  MorphingBackground,
+  CyberpunkGlitch,
+  AdvancedTypewriter
+} from '../../animations';
 
 export interface ExperienceData {
   id: string;
@@ -59,136 +85,374 @@ const experienceData: ExperienceData[] = [
       'Developed a model to forecast 90% confidence interval of the alloy prices and achieved a MAPE of 23%.',
       'Streamlit was used to develop a user interface for displaying the analysis and forecasted results.'
     ],
-    technologies: ['Python', 'APIs', 'Matplotlib', 'Seaborn', 'Statsmodels', 'Time Series', 'Streamlit', 'SQL'],
+    technologies: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Statsmodels', 'Streamlit', 'APIs'],
     achievements: [
-      'MAPE of 23% in price forecasting',
-      '90% confidence interval modeling',
-      'Historical anomaly detection system'
+      'Advanced time series forecasting model with 23% MAPE',
+      'Historical anomaly detection system',
+      'Interactive Streamlit dashboard'
     ],
     type: 'past'
   },
   {
-    id: 'innova-ds-2020',
+    id: 'innova-2022',
     company: 'Innova Solutions',
     position: 'Data Scientist',
-    duration: 'October 2020 - March 2023',
-    startDate: '2020-10',
+    duration: 'July 2022 - March 2023',
+    startDate: '2022-07',
     endDate: '2023-03',
     location: 'Hyderabad, India',
-    domain: 'Supply Chain, Logistics & Healthcare',
+    domain: 'Healthcare (Humana)',
     description: [
-      'Used libraries like numpy, pandas, seaborn, and plotly to perform EDA and visualizations on data to produce insights that aided business in making crucial decisions.',
-      'Using Logistic Regression, developed a predictive model to predict the likelihood of a shipment being delayed with an accuracy of 93%.',
-      'Helped the company in reducing losses by identifying anomalies in transportation where third-party vendors were used.',
-      'Developed robust algorithms to predict the risk of hospitalization and recommend treatment plans for therapy patients using K-NN and custom scoring algorithms.',
-      'Achieved remarkable accuracy of 82% in building a model that recommends a minimum of 7 treatments in a treatment plan.',
-      'Implemented a facial recognition system using state-of-the-art algorithms for automated library check-in and check-out.'
+      'Developed an end-to-end machine learning model to identify high-risk patients in the healthcare domain.',
+      'Applied various data preprocessing techniques and feature engineering to enhance model performance.',
+      'Implemented classification algorithms achieving 82% accuracy in patient risk assessment.',
+      'Created comprehensive data visualizations and reports for stakeholder presentations.'
     ],
-    technologies: ['Python', 'Pandas', 'NumPy', 'Seaborn', 'Plotly', 'Logistic Regression', 'K-NN', 'Computer Vision', 'Flask', 'Pyzbar'],
+    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Feature Engineering', 'Classification', 'Data Visualization'],
     achievements: [
-      '93% accuracy in shipment delay prediction',
-      '82% accuracy in treatment recommendation',
-      'Facial recognition automation system'
+      '82% accuracy in patient risk prediction',
+      'End-to-end ML pipeline development',
+      'Stakeholder presentation system'
     ],
     type: 'past'
   },
   {
-    id: 'innova-swe-2018',
+    id: 'innova-2019',
     company: 'Innova Solutions',
     position: 'Software Engineer',
-    duration: 'August 2018 - September 2020',
-    startDate: '2018-08',
-    endDate: '2020-09',
+    duration: 'September 2019 - June 2022',
+    startDate: '2019-09',
+    endDate: '2022-06',
     location: 'Hyderabad, India',
-    domain: 'Retail Shopping Cart & Sales Application',
+    domain: 'Retail (Walmart)',
     description: [
-      'Developed web applications using Spring MVC, HTML, CSS, React, and Backbone JS.',
-      'Developed Micro-services using Spring Boot.',
-      'Efficacious at managing the source versions with the development team using Git.',
-      'Integration of user-facing elements developed by front-end developers with server-side logic.',
-      'Developed REST controllers using Spring Data REST to serve the UI with required JSON data.'
+      'Developed and maintained web applications using Java Spring framework and React.js.',
+      'Implemented barcode scanning functionality using Python libraries for inventory management.',
+      'Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      'Participated in code reviews and maintained coding standards across the development team.'
     ],
-    technologies: ['Spring MVC', 'React', 'Spring Boot', 'HTML', 'CSS', 'Backbone.js', 'Git', 'REST APIs', 'Java'],
+    technologies: ['Java', 'Spring MVC', 'React', 'JavaScript', 'HTML', 'CSS', 'Python', 'Pyzbar', 'Git'],
     achievements: [
       'Full-stack web application development',
-      'Microservices architecture implementation',
-      'RESTful API design and development'
+      'Barcode scanning system implementation',
+      'Cross-functional team collaboration'
     ],
     type: 'past'
   }
 ];
 
+type TabType = 'overview' | 'journey' | 'technologies';
+
+interface TabConfig {
+  id: TabType;
+  label: string;
+  icon: React.ReactNode;
+}
+
+const tabs: TabConfig[] = [
+  {
+    id: 'overview',
+    label: 'Career Overview',
+    icon: <TrendingUp className="w-4 h-4" />
+  },
+  {
+    id: 'journey',
+    label: 'Professional Journey',
+    icon: <Briefcase className="w-4 h-4" />
+  },
+  {
+    id: 'technologies',
+    label: 'Technology Stack',
+    icon: <Code className="w-4 h-4" />
+  }
+];
+
 export const Experience: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<TabType>('overview');
   const [selectedExperience, setSelectedExperience] = useState<string>(experienceData[0].id);
+  
   const currentExperience = experienceData.find(exp => exp.id === selectedExperience);
 
+  // Stats for animated counter
+  const careerStats = [
+    { number: "4", label: "Positions", color: "text-blue-600 dark:text-blue-400" },
+    { number: "6+", label: "Years", color: "text-green-600 dark:text-green-400" },
+    { number: "2", label: "Cities", color: "text-purple-600 dark:text-purple-400" },
+    { number: "5", label: "Domains", color: "text-orange-600 dark:text-orange-400" }
+  ];
+
   return (
-    <section id="experience" className={styles.experienceSection}>
-      <div className="max-w-7xl mx-auto px-4 py-20">
+    <section id="experience" className="relative min-h-screen py-20 overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+        <MorphingBackground intensity="light" />
+      </div>
+
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className={`absolute rounded-full opacity-20 ${
+              i % 3 === 0 ? 'animate-float' : 
+              i % 3 === 1 ? 'animate-float-delayed' : 'animate-float-slow'
+            } ${
+              i % 4 === 0 ? 'bg-blue-400 dark:bg-blue-600' :
+              i % 4 === 1 ? 'bg-purple-400 dark:bg-purple-600' :
+              i % 4 === 2 ? 'bg-green-400 dark:bg-green-600' :
+              'bg-orange-400 dark:bg-orange-600'
+            }`}
+            style={{
+              width: `${Math.random() * 40 + 20}px`,
+              height: `${Math.random() * 40 + 20}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 container mx-auto px-6 lg:px-8">
+        
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Professional Journey
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            6+ years of experience building data-intensive applications and driving business impact 
-            through analytics, machine learning, and innovative software solutions.
-          </p>
-        </div>
+        <SectionReveal className="text-center mb-16">
+          <div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <CyberpunkGlitch
+                text="Professional Experience"
+                trigger="auto"
+                className="bg-gradient-to-r from-gray-900 via-blue-600 to-purple-600 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+              />
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <AdvancedTypewriter
+                texts={[
+                  "My journey through the world of data science and software engineering, building impactful solutions across diverse domains and technologies."
+                ]}
+                typingSpeed={50}
+                loop={false}
+                className="text-xl text-gray-600 dark:text-gray-300"
+              />
+            </div>
+          </div>
+        </SectionReveal>
 
-        {/* Career Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <Briefcase className="w-8 h-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">4</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Positions</div>
+        {/* Tab Navigation */}
+        <FadeInUp delay={400}>
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            {tabs.map((tab) => (
+              <MagneticButton
+                key={tab.id}
+                variant={activeTab === tab.id ? "primary" : "ghost"}
+                size="sm"
+                onClick={() => setActiveTab(tab.id)}
+                magnetStrength={0.2}
+                className="mx-1"
+              >
+                {tab.icon}
+                <span className="ml-2">{tab.label}</span>
+              </MagneticButton>
+            ))}
           </div>
-          
-          <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <Calendar className="w-8 h-8 text-green-600 dark:text-green-400 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">6+</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Years</div>
-          </div>
-          
-          <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <MapPin className="w-8 h-8 text-purple-600 dark:text-purple-400 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">2</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Cities</div>
-          </div>
-          
-          <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <TrendingUp className="w-8 h-8 text-orange-600 dark:text-orange-400 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">5</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Domains</div>
-          </div>
-        </div>
+        </FadeInUp>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left: Timeline */}
-          <div className="lg:col-span-1">
-            <Timeline 
-              experiences={experienceData}
-              selectedId={selectedExperience}
-              onSelect={setSelectedExperience}
-            />
-          </div>
+        {/* Tab Content */}
+        {activeTab === 'overview' && (
+          <div className="space-y-12">
+            
+            {/* Career Stats */}
+            <FadeInUp delay={600}>
+              <AnimatedStats 
+                stats={careerStats}
+                layout="grid"
+                className="max-w-4xl mx-auto mb-12"
+              />
+            </FadeInUp>
 
-          {/* Right: Job Details */}
-          <div className="lg:col-span-2">
-            {currentExperience && (
-              <JobCard experience={currentExperience} />
-            )}
-          </div>
-        </div>
+            {/* Career Summary Cards */}
+            <div className="grid lg:grid-cols-2 gap-8">
+              
+              {/* Current Position Card */}
+              <FadeInLeft delay={800}>
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center">
+                      <Building className="w-8 h-8 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                        Current Position
+                      </h3>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-green-600 dark:text-green-400 font-medium">Active</span>
+                      </div>
+                    </div>
+                  </div>
 
-        {/* All Technologies Used */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Technologies & Tools
-          </h3>
-          <SkillTags experiences={experienceData} />
-        </div>
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                      Senior Data Scientist
+                    </h4>
+                    <p className="text-blue-600 dark:text-blue-400 font-medium">
+                      Bosch Global Software Technologies
+                    </p>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                      <div className="flex items-center">
+                        <Calendar className="w-4 h-4 mr-2" />
+                        <span>Since September 2023</span>
+                      </div>
+                      <div className="flex items-center">
+                        <MapPin className="w-4 h-4 mr-2" />
+                        <span>Coimbatore, India</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Target className="w-4 h-4 mr-2" />
+                        <span>Sensor Technology</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </FadeInLeft>
+
+              {/* Career Growth Card */}
+              <FadeInRight delay={800}>
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+                      <TrendingUp className="w-8 h-8 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                        Career Growth
+                      </h3>
+                      <p className="text-lg text-purple-600 dark:text-purple-400 font-medium">
+                        Progressive Development
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Role Evolution</span>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">Engineer → Senior Data Scientist</span>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Industry Impact</span>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">5 Different Domains</span>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Geographic Reach</span>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">Hyderabad → Coimbatore</span>
+                    </div>
+                  </div>
+                </div>
+              </FadeInRight>
+            </div>
+
+            {/* Call to Action */}
+            <FadeInUp delay={1000}>
+              <div className="text-center space-y-4">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <ParticleButton explosionType="confetti">
+                    <MagneticButton
+                      variant="primary"
+                      size="lg"
+                      magnetStrength={0.5}
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                      onClick={() => setActiveTab('journey')}
+                    >
+                      <Briefcase className="w-5 h-5 mr-2" />
+                      <span>Explore My Journey</span>
+                    </MagneticButton>
+                  </ParticleButton>
+
+                  <ParticleButton explosionType="cyber">
+                    <MagneticButton
+                      variant="outline"
+                      size="lg"
+                      magnetStrength={0.3}
+                      className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+                      onClick={() => setActiveTab('technologies')}
+                    >
+                      <Code className="w-5 h-5 mr-2" />
+                      <span>View Tech Stack</span>
+                    </MagneticButton>
+                  </ParticleButton>
+                </div>
+              </div>
+            </FadeInUp>
+          </div>
+        )}
+
+        {activeTab === 'journey' && (
+          <div className="space-y-12">
+            
+            {/* Journey Section Header */}
+            <div className="grid lg:grid-cols-3 gap-8">
+            
+              {/* Left: Timeline */}
+              <FadeInLeft delay={600} className="lg:col-span-1">
+                <div className="lg:sticky lg:top-8">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                      <Briefcase className="w-5 h-5 mr-2 text-blue-600" />
+                      Career Timeline
+                    </h3>
+                    <Timeline 
+                      experiences={experienceData}
+                      selectedId={selectedExperience}
+                      onSelect={setSelectedExperience}
+                    />
+                  </div>
+                </div>
+              </FadeInLeft>
+
+              {/* Right: Job Details */}
+              <FadeInRight delay={800} className="lg:col-span-2">
+                <div className="min-h-[600px]">
+                  {currentExperience && (
+                    <RevealOnScroll 
+                      key={currentExperience.id} 
+                      direction="up" 
+                      duration={500}
+                      className="h-full"
+                    >
+                      <JobCard experience={currentExperience} />
+                    </RevealOnScroll>
+                  )}
+                </div>
+              </FadeInRight>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'technologies' && (
+          <div className="space-y-8">
+            
+            {/* Technology Section Header */}
+            <div className="text-center">
+              <FadeInUp delay={0}>
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  Technology Ecosystem
+                </h3>
+              </FadeInUp>
+              <FadeInUp delay={200}>
+                <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+                  A comprehensive collection of technologies, frameworks, and tools I've mastered 
+                  across different roles and projects throughout my career journey.
+                </p>
+              </FadeInUp>
+            </div>
+
+            <FadeInUp delay={400}>
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-700">
+                <SkillTags experiences={experienceData} />
+              </div>
+            </FadeInUp>
+          </div>
+        )}
       </div>
     </section>
   );
