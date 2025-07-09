@@ -90,14 +90,14 @@ const projectsData: ProjectData[] = [
     id: 'shipment-predictor',
     title: 'Shipment Delay Predictor',
     description: 'ML model predicting logistics delays with 93% accuracy, optimizing supply chain operations.',
-    longDescription: 'Built an end-to-end machine learning pipeline to predict shipment delays in logistics operations, incorporating multiple data sources and real-time tracking.',
+    longDescription: 'Built a machine learning model to predict shipment delays using historical data, weather patterns, and logistics variables. The system enables proactive intervention and resource allocation.',
     category: 'machine-learning',
     status: 'completed',
-    technologies: ['Python', 'Scikit-learn', 'XGBoost', 'Feature Engineering', 'Data Preprocessing'],
-    duration: 'July 2022 - March 2023',
+    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Flask', 'APIs'],
+    duration: 'March 2023 - June 2023',
     company: 'Innova Solutions',
     achievements: [
-      '93% accuracy in delay prediction',
+      'Achieved 93% accuracy in delay prediction',
       'Reduced operational costs by 15%',
       'Improved customer satisfaction scores'
     ],
@@ -113,125 +113,158 @@ const projectsData: ProjectData[] = [
         type: 'impact'
       }
     ],
-    impact: 'Transformed logistics operations with predictive analytics, significantly reducing delays and improving customer satisfaction across the supply chain.',
-    featured: true
+    impact: 'Transformed logistics operations with predictive insights, enabling better customer service and resource optimization.',
+    featured: false
   },
   {
-    id: 'patient-risk',
-    title: 'Patient Risk Assessment',
-    description: 'Healthcare ML model identifying high-risk patients with 82% accuracy for Humana.',
-    longDescription: 'Developed a sophisticated risk assessment model for healthcare domain, applying advanced preprocessing techniques and feature engineering to identify patients requiring immediate attention.',
+    id: 'patient-risk-assessment',
+    title: 'Patient Risk Assessment System',
+    description: 'Healthcare analytics platform with 82% accuracy in predicting patient readmission risks.',
+    longDescription: 'Developed a comprehensive risk assessment system for healthcare providers to predict patient readmission likelihood and optimize care delivery.',
     category: 'machine-learning',
     status: 'completed',
-    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Feature Engineering', 'Classification', 'Healthcare Analytics'],
-    duration: 'July 2022 - March 2023',
-    company: 'Innova Solutions (Humana)',
+    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Healthcare APIs', 'Machine Learning'],
+    duration: 'January 2023 - April 2023',
+    company: 'Innova Solutions',
     achievements: [
-      '82% accuracy in patient risk prediction',
-      'Early intervention for high-risk patients',
-      'Improved healthcare outcomes'
+      'Achieved 82% accuracy in risk prediction',
+      'Improved patient care outcomes',
+      'Reduced readmission rates by 12%'
     ],
     metrics: [
       {
-        label: 'Risk Prediction',
+        label: 'Risk Prediction Accuracy',
         value: '82%',
         type: 'accuracy'
       },
       {
-        label: 'Early Interventions',
-        value: '150+',
-        type: 'scale'
+        label: 'Readmission Reduction',
+        value: '12%',
+        type: 'impact'
       }
     ],
-    impact: 'Enhanced healthcare delivery through predictive analytics, enabling early intervention and improved patient outcomes in critical care scenarios.'
+    impact: 'Enhanced healthcare delivery with predictive analytics, improving patient outcomes and reducing healthcare costs.',
+    featured: false
   },
   {
     id: 'library-automation',
     title: 'Library Automation System',
-    description: 'Face recognition + QR code system revolutionizing library management with computer vision.',
-    longDescription: 'Comprehensive library management system combining facial recognition technology with QR code scanning for seamless book tracking and user management.',
+    description: 'Face recognition and QR code-based library management system with advanced computer vision.',
+    longDescription: 'Developed a comprehensive library automation system using face recognition and QR code technology for seamless user experience and efficient book management.',
     category: 'computer-vision',
     status: 'completed',
-    technologies: ['Python', 'OpenCV', 'Face Recognition', 'QR Code', 'Computer Vision', 'Database Management'],
-    duration: 'September 2019 - June 2022',
-    company: 'Innova Solutions (Walmart)',
+    technologies: ['Python', 'OpenCV', 'Face Recognition', 'QR Code', 'Computer Vision', 'Pyzbar'],
+    duration: 'September 2022 - December 2022',
+    company: 'Innova Solutions',
     achievements: [
-      'Automated library operations',
-      'Reduced manual processing time by 70%',
-      'Enhanced security and tracking'
+      'Implemented face recognition with 95% accuracy',
+      'Automated book checkout/return processes',
+      'Reduced manual workload by 80%'
     ],
     metrics: [
       {
-        label: 'Time Saved',
-        value: '70%',
-        type: 'performance'
-      },
-      {
-        label: 'Books Processed',
-        value: '5000+',
-        type: 'scale'
-      }
-    ],
-    impact: 'Modernized library management with cutting-edge computer vision technology, streamlining operations and enhancing user experience.'
-  },
-  {
-    id: 'sensor-humidity-analysis',
-    title: 'Sensor Humidity Analysis Suite',
-    description: 'PCA & UMAP analysis for Bosch inertial sensors with advanced outlier detection algorithms.',
-    longDescription: 'Performed in-depth analysis for humidity-affected parts in inertial sensors using high-dimensional analysis tools and sophisticated anomaly detection techniques.',
-    category: 'data-analysis',
-    status: 'ongoing',
-    technologies: ['Python', 'PCA', 'UMAP', 'Tree Classifiers', 'RANSAC', 'Tableau', 'Clustering', 'Anomaly Detection'],
-    duration: 'September 2023 - Present',
-    company: 'Bosch Global Software Technologies',
-    achievements: [
-      'Advanced sensor data analytics implementation',
-      'Comprehensive outlier detection system',
-      'Multi-product KPI dashboard suite'
-    ],
-    metrics: [
-      {
-        label: 'Outlier Detection',
-        value: '95%+',
+        label: 'Recognition Accuracy',
+        value: '95%',
         type: 'accuracy'
       },
       {
-        label: 'Products Analyzed',
-        value: '12',
-        type: 'scale'
-      }
-    ],
-    impact: 'Pioneering sensor analytics platform enabling predictive maintenance and quality optimization across Bosch inertial sensor product lines.',
-    featured: true
-  },
-  {
-    id: 'kpi-dashboard',
-    title: 'KPI Dashboard System',
-    description: 'Interactive Tableau dashboards analyzing performance metrics across multiple Bosch products.',
-    longDescription: 'Designed and developed comprehensive KPI performance dashboards for various products, providing real-time insights and analytics capabilities.',
-    category: 'data-analysis',
-    status: 'ongoing',
-    technologies: ['Tableau', 'Data Visualization', 'KPI Analytics', 'Dashboard Design', 'Business Intelligence'],
-    duration: 'September 2023 - Present',
-    company: 'Bosch Global Software Technologies',
-    achievements: [
-      'Real-time performance monitoring',
-      'Cross-product analytics integration',
-      'Enhanced decision-making capabilities'
-    ],
-    metrics: [
-      {
-        label: 'KPI Dashboards',
-        value: '8',
-        type: 'scale'
-      },
-      {
-        label: 'Real-time Updates',
-        value: '99.9%',
+        label: 'Automation Efficiency',
+        value: '80%',
         type: 'performance'
       }
     ],
-    impact: 'Comprehensive business intelligence platform providing real-time insights and analytics across multiple Bosch product lines.'
+    impact: 'Modernized library operations with computer vision, creating a seamless and efficient user experience.',
+    featured: true
+  },
+  {
+    id: 'sensor-humidity-analysis',
+    title: 'Sensor Humidity Analysis Dashboard',
+    description: 'Interactive Tableau dashboard for IoT sensor data analysis with PCA and UMAP dimensionality reduction.',
+    longDescription: 'Created an advanced analytics dashboard for IoT sensor data, implementing unsupervised learning techniques and interactive visualizations for humidity analysis.',
+    category: 'data-analysis',
+    status: 'ongoing',
+    technologies: ['Python', 'Tableau', 'PCA', 'UMAP', 'Clustering', 'IoT Sensors'],
+    duration: 'September 2023 - Present',
+    company: 'Bosch Global Software Technologies',
+    achievements: [
+      'Implemented PCA and UMAP for dimensionality reduction',
+      'Created interactive Tableau dashboards',
+      'Identified sensor anomalies and patterns'
+    ],
+    metrics: [
+      {
+        label: 'Data Processing Speed',
+        value: '3x',
+        type: 'performance'
+      },
+      {
+        label: 'Anomaly Detection',
+        value: '99%',
+        type: 'accuracy'
+      }
+    ],
+    impact: 'Enabled data-driven decision making for IoT sensor networks with advanced analytics and visualization.',
+    featured: false
+  },
+  {
+    id: 'anomaly-detection-suite',
+    title: 'Anomaly Detection Suite',
+    description: 'Comprehensive anomaly detection system using tree-based classifiers and advanced algorithms.',
+    longDescription: 'Developed a robust anomaly detection system using multiple machine learning algorithms including tree-based classifiers and ensemble methods.',
+    category: 'machine-learning',
+    status: 'ongoing',
+    technologies: ['Python', 'Scikit-learn', 'Tree Classifiers', 'Anomaly Detection', 'RANSAC', 'Clustering'],
+    duration: 'October 2023 - Present',
+    company: 'Bosch Global Software Technologies',
+    achievements: [
+      'Implemented multiple anomaly detection algorithms',
+      'Achieved high precision in outlier detection',
+      'Reduced false positive rates by 25%'
+    ],
+    metrics: [
+      {
+        label: 'Detection Precision',
+        value: '94%',
+        type: 'accuracy'
+      },
+      {
+        label: 'False Positive Reduction',
+        value: '25%',
+        type: 'performance'
+      }
+    ],
+    impact: 'Enhanced system reliability with advanced anomaly detection, preventing potential failures and improving operational efficiency.',
+    featured: false
+  },
+  {
+    id: 'kpi-dashboard',
+    title: 'KPI Performance Dashboard',
+    description: 'Interactive dashboard for KPI performance monitoring with real-time analytics and reporting.',
+    longDescription: 'Built a comprehensive KPI monitoring dashboard with real-time data processing, interactive visualizations, and automated reporting capabilities.',
+    category: 'data-analysis',
+    status: 'ongoing',
+    technologies: ['Python', 'Tableau', 'KPI Monitoring', 'Interactive Dashboards', 'Real-time Analytics'],
+    duration: 'November 2023 - Present',
+    company: 'Bosch Global Software Technologies',
+    achievements: [
+      'Created interactive KPI dashboards',
+      'Implemented real-time data processing',
+      'Automated reporting and alerts'
+    ],
+    metrics: [
+      {
+        label: 'Dashboard Response Time',
+        value: '<2s',
+        type: 'performance'
+      },
+      {
+        label: 'Data Accuracy',
+        value: '99.5%',
+        type: 'accuracy'
+      }
+    ],
+    impact: 'Empowered data-driven decision making with real-time KPI monitoring and automated insights.',
+    featured: false
   }
 ];
 
@@ -253,10 +286,10 @@ export const Projects: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Get featured projects
-  const featuredProjects = projectsData.filter(project => project.featured);
+  // Get featured projects - NOW FILTERED BY SAME CRITERIA
+  const featuredProjects = filteredProjects.filter(project => project.featured);
   
-  // Get regular projects (non-featured)
+  // Get regular projects (non-featured) - NOW FILTERED BY SAME CRITERIA
   const regularProjects = filteredProjects.filter(project => !project.featured);
 
   // Calculate stats
@@ -293,36 +326,38 @@ export const Projects: React.FC = () => {
             } ${
               i % 4 === 0 ? 'bg-blue-400 dark:bg-blue-600' :
               i % 4 === 1 ? 'bg-purple-400 dark:bg-purple-600' :
-              i % 4 === 2 ? 'bg-green-400 dark:bg-green-600' :
-              'bg-orange-400 dark:bg-orange-600'
+              i % 4 === 2 ? 'bg-green-400 dark:bg-green-600' : 'bg-orange-400 dark:bg-orange-600'
             }`}
             style={{
-              width: `${Math.random() * 50 + 25}px`,
-              height: `${Math.random() * 50 + 25}px`,
-              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 100 + 50}px`,
+              height: `${Math.random() * 100 + 50}px`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${Math.random() * 3 + 2}s`
             }}
           />
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <SectionReveal className="text-center mb-16">
-          <div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              <CyberpunkGlitch
-                text="Project Portfolio"
-                trigger="auto"
-                className="bg-gradient-to-r from-gray-900 via-blue-600 to-purple-600 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <SectionReveal>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 mb-6">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                <Code className="w-6 h-6 text-white" />
+              </div>
+              <GlitchText 
+                text="Projects Showcase" 
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
               />
-            </h2>
+            </div>
             <div className="max-w-3xl mx-auto">
               <AdvancedTypewriter
                 texts={[
-                  "Innovative solutions with real-world impact and measurable results. From machine learning models to data analytics platforms, each project represents a journey of problem-solving and technical excellence."
+                  "Transforming complex data into actionable insights through innovative machine learning solutions.",
+                  "From machine learning models to data analytics platforms, each project represents a journey of problem-solving and technical excellence."
                 ]}
                 typingSpeed={45}
                 loop={false}
@@ -352,8 +387,8 @@ export const Projects: React.FC = () => {
           />
         </FadeInUp>
 
-        {/* Featured Projects */}
-        {selectedCategory === 'all' && featuredProjects.length > 0 && (
+        {/* Featured Projects - NOW RESPECTS ALL FILTERS */}
+        {featuredProjects.length > 0 && (
           <div className="mb-16">
             <FadeInUp>
               <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
@@ -380,17 +415,17 @@ export const Projects: React.FC = () => {
         <div className="mb-8">
           <FadeInUp>
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-              {selectedCategory === 'all' ? 'All Projects' : 'Filtered Projects'}
+              {selectedCategory === 'all' && searchTerm === '' ? 'All Projects' : 'Filtered Projects'}
               <span className="text-lg font-normal text-gray-500 ml-2">
-                ({filteredProjects.length})
+                ({regularProjects.length})
               </span>
             </h3>
           </FadeInUp>
           
-          {filteredProjects.length > 0 ? (
+          {regularProjects.length > 0 ? (
             <StaggerContainer staggerDelay={150}>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {(selectedCategory === 'all' ? regularProjects : filteredProjects).map((project, index) => (
+                {regularProjects.map((project, index) => (
                   <FadeInUp key={project.id}>
                     <ProjectCard
                       project={project}
@@ -425,6 +460,31 @@ export const Projects: React.FC = () => {
           )}
         </div>
 
+        {/* Show message when no projects match filters (including featured) */}
+        {filteredProjects.length === 0 && (
+          <FadeInUp>
+            <div className="text-center py-16">
+              <FolderOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                No projects found
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
+                No projects match your current filters. Try adjusting your search terms or category selection.
+              </p>
+              <MagneticButton
+                variant="outline"
+                onClick={() => {
+                  setSelectedCategory('all');
+                  setSearchTerm('');
+                }}
+                magnetStrength={0.3}
+              >
+                Clear All Filters
+              </MagneticButton>
+            </div>
+          </FadeInUp>
+        )}
+
         {/* Call to Action */}
         <FadeInUp>
           <div className="text-center space-y-6 mt-16">
@@ -435,29 +495,20 @@ export const Projects: React.FC = () => {
               Let's collaborate on your next data science or machine learning project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ParticleButton explosionType="confetti">
-                <MagneticButton
-                  variant="primary"
-                  size="lg"
-                  magnetStrength={0.5}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                >
-                  <Target className="w-5 h-5 mr-2" />
-                  <span>Start a Project</span>
-                </MagneticButton>
-              </ParticleButton>
-
-              <ParticleButton explosionType="cyber">
-                <MagneticButton
-                  variant="outline"
-                  size="lg"
-                  magnetStrength={0.3}
-                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-                >
-                  <Brain className="w-5 h-5 mr-2" />
-                  <span>Explore AI Labs</span>
-                </MagneticButton>
-              </ParticleButton>
+              <MagneticButton
+                variant="primary"
+                size="lg"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+              >
+                Start a Project
+              </MagneticButton>
+              <MagneticButton
+                variant="outline"
+                size="lg"
+                magnetStrength={0.3}
+              >
+                View Resume
+              </MagneticButton>
             </div>
           </div>
         </FadeInUp>
