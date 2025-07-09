@@ -9,7 +9,7 @@ export const AILabsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 text-center">
           <Brain className="w-24 h-24 text-orange-600 dark:text-orange-400 mx-auto mb-8" />
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            Coming in Week 3
+            Coming Soon
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Interactive AI features including resume analyzer, data story generator, 

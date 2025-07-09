@@ -10,7 +10,7 @@ export const ContactPage: React.FC = () => {
           <div className="text-center mb-16">
             <Mail className="w-24 h-24 text-blue-600 dark:text-blue-400 mx-auto mb-8" />
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Coming in Week 3
+              Coming Soon
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
               Smart contact form with AI categorization and instant response capabilities.

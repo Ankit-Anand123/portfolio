@@ -9,7 +9,7 @@ export const CreativePage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 text-center">
           <Camera className="w-24 h-24 text-pink-600 dark:text-pink-400 mx-auto mb-8" />
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            Coming in Week 3
+            Coming Soon
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             A showcase of creative work including photography galleries and poetry 
