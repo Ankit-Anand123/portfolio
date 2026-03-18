@@ -5,28 +5,24 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const ProjectsPage: React.FC = () => {
   return (
-    <div className="min-h-screen">
-      {/* Projects Section */}
+    <div className="min-h-screen bg-[#050505]">
       <Projects />
-
-      {/* Navigation */}
-      <div className="py-12 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4">
+      <div className="py-12 bg-[#0F0F0F] border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex items-center justify-between">
             <Link
               to="/experience"
-              className="flex items-center space-x-2 px-6 py-3 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-200 shadow-md"
+              className="flex items-center space-x-2 px-6 py-3 rounded-full border border-white/8 text-[#A1A1AA] hover:text-[#F5F5F7] hover:border-white/16 font-manrope text-sm transition-all duration-300"
             >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Previous: Experience</span>
+              <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
+              <span>Experience</span>
             </Link>
-            
             <Link
-              to="/ai-labs"
-              className="flex items-center space-x-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors duration-200 shadow-md"
+              to="/contact"
+              className="flex items-center space-x-2 px-6 py-3 rounded-full bg-[#D4AF37] text-[#050505] hover:bg-[#F0D060] font-manrope font-semibold text-sm transition-all duration-300"
             >
-              <span>Next: AI Labs</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Contact</span>
+              <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
             </Link>
           </div>
         </div>

@@ -15,7 +15,7 @@ import './styles/globals.css';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className="min-h-screen bg-[#050505] text-[#F5F5F7]">
         {/* Scroll Progress Indicator */}
         <ScrollProgressIndicator 
           color="gradient"
