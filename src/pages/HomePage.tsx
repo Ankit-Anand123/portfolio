@@ -86,7 +86,7 @@ export const HomePage: React.FC = () => {
     },
     {
       title: 'Project Portfolio',
-      description: 'Innovative solutions from steel price forecasting to patient risk assessment systems.',
+      description: 'Innovative solutions from EasyBot agentic AI to HypoTestX open-source library and healthcare analytics.',
       path: '/projects',
     },
     {

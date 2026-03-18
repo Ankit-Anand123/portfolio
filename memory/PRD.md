@@ -34,7 +34,13 @@ A senior Data Scientist's portfolio website redesigned from a cluttered cyberpun
 
 ## What's Been Implemented
 
-### 2025-03-18 — Full Luxury Redesign
+### 2026-03-18 — New Features (Session 2)
+- **Theme Toggle Fixed** — CSS custom properties (`--color-bg`, `--color-surface`, `--color-text`, etc.) with `html.dark` / `html:not(.dark)` overrides; `useTheme.ts` rewritten with `useLayoutEffect` to prevent flash
+- **Resume Download** — `public/resume.pdf` from uploaded PDF; Hero, About, and CTA all link to `/resume.pdf` with proper download attribute
+- **Open Source Section** — `/open-source` route + `OpenSourcePage.tsx` + `OpenSource.tsx` component with HypoTestX info (Overview/Features/Quick Start tabs), stats, pip install command, GitHub + PyPI links
+- **Projects Updated** — 10 projects total; EasyBot (agentic AI chatbot at Bosch), HypoTestX (open source library), UNICHUNK (RAG), Multi MCP Platform, Wafemap Localization added; EasyBot + HypoTestX marked `featured: true`; Open Source filter category added
+- **HomePage** — Featured Work changed to EasyBot; Open Source Spotlight section added (HypoTestX code demo + pip install + Learn More)
+- **Header** — "Open Source" nav item added
 - **`tailwind.config.js`** — Added luxury color palette (obsidian, gold), Playfair Display + Manrope + JetBrains Mono fonts, refined animations
 - **`src/index.css`** — Google Fonts import (Playfair Display, Manrope, JetBrains Mono)
 - **`src/styles/globals.css`** — Complete rewrite: clean luxury utilities, gold shimmer text, glass card, gold line animation, noise overlay, scrollbar styling
