@@ -30,7 +30,7 @@ export const FloatingProfilePhoto: React.FC<FloatingProfilePhotoProps> = ({
           boxShadow: '0 0 40px rgba(212, 175, 55, 0.12)',
         }}
       >
-        <div className={`w-full h-full rounded-full overflow-hidden bg-[#1A1A1A]`}>
+        <div className={`w-full h-full rounded-full overflow-hidden bg-[var(--color-surface2)]`}>
           <img
             src={src}
             alt={alt}

@@ -42,7 +42,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         {/* Mobile Social Links */}
         <div className="flex items-center justify-center space-x-4 pt-4 border-t border-gray-200 dark:border-gray-700">
           <a
-            href="https://github.com/ankitanand29"
+            href="https://github.com/Ankit-Anand123"
             target="_blank"
             rel="noopener noreferrer"
             className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${

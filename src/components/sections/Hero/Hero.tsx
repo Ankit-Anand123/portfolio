@@ -195,7 +195,7 @@ const Hero: React.FC = () => {
                 <Linkedin className="w-4 h-4" strokeWidth={1.5} />
               </a>
               <a
-                href="https://github.com/ankitanand29"
+                href="https://github.com/Ankit-Anand123"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="social-github"
