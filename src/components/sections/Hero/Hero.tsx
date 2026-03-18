@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-xs font-manrope text-emerald-400 tracking-widest uppercase">
-                Open to Opportunities
+                Open for Collaborations
               </span>
             </div>
 
@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
               className="font-manrope text-[var(--color-muted)] text-base md:text-lg leading-relaxed max-w-lg mb-3 animate-fadeInUp"
               style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
             >
-              6+ years transforming complex data into actionable insights.
+              8+ years transforming complex data into actionable insights.
             </p>
             <p
               className="font-manrope text-[var(--color-muted)] text-base md:text-lg leading-relaxed max-w-lg mb-10 animate-fadeInUp"

@@ -11,7 +11,7 @@ const About: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'bio' | 'focus' | 'education'>('bio');
 
   const skillsData = useMemo(() => [
-    { category: 'Programming', level: 95, description: 'Expert in Python and SQL with 6+ years of experience', icon: <Code className="w-4 h-4" strokeWidth={1.5} />, color: '#D4AF37', skills: ['Python', 'SQL', 'Flask', 'REST APIs'] },
+    { category: 'Programming', level: 95, description: 'Expert in Python and SQL with 8+ years of experience', icon: <Code className="w-4 h-4" strokeWidth={1.5} />, color: '#D4AF37', skills: ['Python', 'SQL', 'Flask', 'REST APIs'] },
     { category: 'Data Science', level: 90, description: 'Advanced ML, Statistical Analysis, and Computer Vision', icon: <Brain className="w-4 h-4" strokeWidth={1.5} />, color: '#D4AF37', skills: ['Machine Learning', 'Statistical Analysis', 'Computer Vision', 'Time Series', 'Gen AI'] },
     { category: 'Libraries', level: 88, description: 'Proficient in modern data science and ML frameworks', icon: <Database className="w-4 h-4" strokeWidth={1.5} />, color: '#D4AF37', skills: ['Pandas', 'NumPy', 'Scikit-learn', 'Seaborn', 'Plotly', 'Streamlit', 'LangChain'] },
     { category: 'Analytics', level: 85, description: 'Business intelligence and data visualization expertise', icon: <BarChart className="w-4 h-4" strokeWidth={1.5} />, color: '#D4AF37', skills: ['Tableau', 'Hypothesis Testing', 'Predictive Modeling', 'KPI Dashboards'] },
@@ -64,7 +64,7 @@ const About: React.FC = () => {
               Meet Ankit Anand
             </h1>
             <p className="font-manrope text-[var(--color-muted)] text-lg leading-relaxed max-w-2xl">
-              Dedicated Data Scientist with 6+ years of experience building data-intensive applications
+              Dedicated Data Scientist with 8+ years of experience building data-intensive applications
               and helping businesses solve complex problems through analytics and machine learning.
             </p>
           </div>
@@ -114,7 +114,7 @@ const About: React.FC = () => {
 
                   <p className="font-manrope text-[var(--color-muted)] text-sm leading-relaxed mb-8">
                     Dedicated and result-oriented Data Scientist and Blogger with a strong mathematical
-                    background and 6+ years of experience in building data-intensive applications.
+                    background and 8+ years of experience in building data-intensive applications.
                     Proficient in descriptive analytics, predictive modeling, and data processing,
                     helping businesses solve complex problems.
                   </p>

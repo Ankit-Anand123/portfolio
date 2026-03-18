@@ -76,7 +76,7 @@ export const HomePage: React.FC = () => {
   const portfolioLinks = [
     {
       title: 'About Me',
-      description: '6+ year journey from software engineering to senior data scientist across diverse industries.',
+      description: '8+ year journey from software engineering to senior data scientist across diverse industries.',
       path: '/about',
     },
     {

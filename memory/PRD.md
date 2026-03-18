@@ -10,7 +10,7 @@ A senior Data Scientist's portfolio website redesigned from a cluttered cyberpun
 ---
 
 ## User Persona
-**Ankit Anand** — Senior Data Scientist (6+ years)  
+**Ankit Anand** — Senior Data Scientist (8+ years)  
 **Audience:** Hiring managers, recruiters, tech leads, potential collaborators
 
 ---
