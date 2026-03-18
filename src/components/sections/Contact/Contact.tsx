@@ -39,7 +39,7 @@ const contactMethods = [
   {
     icon: <Github className="w-5 h-5" strokeWidth={1.5} />,
     label: 'GitHub',
-    value: 'ankitanand29',
+    value: 'ankit-anand123',
     href: 'https://github.com/Ankit-Anand123',
   },
 ];
