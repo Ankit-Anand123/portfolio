@@ -34,7 +34,9 @@ A senior Data Scientist's portfolio website redesigned from a cluttered cyberpun
 
 ## What's Been Implemented
 
-### 2026-03-18 — New Features (Session 2)
+### 2026-03-18 — Bug Fixes & Updates (Session 3)
+- **GitHub Username** — Updated all `github.com/ankitanand29` → `github.com/Ankit-Anand123` across 8 files (Contact, Hero, Header, SocialLinks components, ContactMethods, ContactInfo, ContactSuccess, HomePage)
+- **Light Theme Fixes** — Fixed inline `background: linear-gradient` using hardcoded `#050505`/`#0F0F0F` in HomePage (now uses `var(--color-bg)` / `var(--color-surface)`); fixed `FloatingProfilePhoto` profile circle from `bg-[#1A1A1A]` to `bg-[var(--color-surface2)]`; bulk replaced `border-white/X` to `border-[var(--color-border)]` across all section components
 - **Theme Toggle Fixed** — CSS custom properties (`--color-bg`, `--color-surface`, `--color-text`, etc.) with `html.dark` / `html:not(.dark)` overrides; `useTheme.ts` rewritten with `useLayoutEffect` to prevent flash
 - **Resume Download** — `public/resume.pdf` from uploaded PDF; Hero, About, and CTA all link to `/resume.pdf` with proper download attribute
 - **Open Source Section** — `/open-source` route + `OpenSourcePage.tsx` + `OpenSource.tsx` component with HypoTestX info (Overview/Features/Quick Start tabs), stats, pip install command, GitHub + PyPI links

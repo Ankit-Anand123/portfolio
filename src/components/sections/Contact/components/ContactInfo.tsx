@@ -91,7 +91,7 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({
             LinkedIn
           </a>
           <a
-            href="https://github.com/ankitanand29"
+            href="https://github.com/Ankit-Anand123"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-3 py-1 bg-gray-800 text-white rounded-lg text-sm hover:bg-gray-900 transition-colors"

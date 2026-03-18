@@ -106,7 +106,7 @@ export const HomePage: React.FC = () => {
       <section
         data-testid="stats-section"
         className="py-16 border-y border-[var(--color-border)]"
-        style={{ background: 'linear-gradient(180deg, #050505 0%, #0F0F0F 100%)' }}
+        style={{ background: 'linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%)' }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <FadeInUp>
@@ -442,7 +442,7 @@ print(result.summary())
       <section
         data-testid="cta-section"
         className="py-24 relative overflow-hidden"
-        style={{ background: 'linear-gradient(180deg, #0F0F0F 0%, #050505 100%)' }}
+        style={{ background: 'linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%)' }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
@@ -498,7 +498,7 @@ print(result.summary())
                 <Linkedin className="w-5 h-5" strokeWidth={1.5} />
               </a>
               <a
-                href="https://github.com/ankitanand29"
+                href="https://github.com/Ankit-Anand123"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"

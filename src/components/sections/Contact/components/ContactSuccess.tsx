@@ -329,7 +329,7 @@ export const ContactSuccess: React.FC<ContactSuccessProps> = ({
           </a>
           
           <a 
-            href="https://github.com/ankitanand29"
+            href="https://github.com/Ankit-Anand123"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors text-sm"

@@ -33,7 +33,7 @@ export const ContactMethods: React.FC<ContactMethodsProps> = ({
     },
     {
       name: 'GitHub',
-      href: 'https://github.com/ankitanand29',
+      href: 'https://github.com/Ankit-Anand123',
       icon: Github,
       color: 'bg-gray-800 hover:bg-gray-900',
       description: 'Code repositories'

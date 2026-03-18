@@ -16,7 +16,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({ className = '' }) => {
     },
     {
       platform: 'GitHub',
-      url: 'https://github.com/ankitanand29',
+      url: 'https://github.com/Ankit-Anand123',
       icon: Github,
       color: 'bg-gray-800 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600'
     },
