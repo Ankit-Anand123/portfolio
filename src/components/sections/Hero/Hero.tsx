@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
   return (
     <section
       data-testid="hero-section"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505] pt-16"
     >
       {/* Subtle radial gradient background */}
       <div
@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
       />
 
       {/* Main layout */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-24 lg:py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-12 lg:py-16">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
           {/* LEFT — Text Content */}
@@ -138,7 +138,7 @@ const Hero: React.FC = () => {
 
             {/* Location */}
             <div
-              className="flex items-center space-x-2 text-[#A1A1AA] text-sm mb-10 animate-fadeInUp"
+              className="flex items-center space-x-2 text-[#A1A1AA] text-sm mb-8 animate-fadeInUp"
               style={{ animationDelay: '0.5s', animationFillMode: 'both' }}
             >
               <MapPin className="w-4 h-4" strokeWidth={1.5} />
@@ -147,7 +147,7 @@ const Hero: React.FC = () => {
 
             {/* CTA Buttons */}
             <div
-              className="flex flex-col sm:flex-row gap-4 mb-12 animate-fadeInUp"
+              className="flex flex-col sm:flex-row gap-4 mb-8 animate-fadeInUp"
               style={{ animationDelay: '0.6s', animationFillMode: 'both' }}
             >
               <button
@@ -179,7 +179,7 @@ const Hero: React.FC = () => {
 
             {/* Social Links */}
             <div
-              className="flex items-center space-x-4 mb-16 animate-fadeInUp"
+              className="flex items-center space-x-4 mb-8 animate-fadeInUp"
               style={{ animationDelay: '0.7s', animationFillMode: 'both' }}
             >
               <a
@@ -261,7 +261,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Scroll cue */}
-        <div className="flex justify-center mt-16 md:mt-20">
+        <div className="flex justify-center mt-10 md:mt-12">
           <button
             onClick={() => window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' })}
             className="flex flex-col items-center space-y-2 text-[#A1A1AA] hover:text-[#D4AF37] transition-colors duration-300 group"
