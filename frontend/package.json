@@ -1,0 +1,9 @@
+{
+  "name": "frontend-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cd /app && yarn start",
+    "build": "cd /app && yarn build"
+  }
+}

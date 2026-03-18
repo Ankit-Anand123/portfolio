@@ -5,9 +5,7 @@ import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ExperiencePage } from './pages/ExperiencePage';
 import { ProjectsPage } from './pages/ProjectsPage';
-import { AILabsPage } from './pages/AILabsPage';
-import { CreativePage } from './pages/CreativePage';
-import { BlogPage } from './pages/BlogPage';
+import { OpenSourcePage } from './pages/OpenSourcePage';
 import { ContactPage } from './pages/ContactPage';
 import { ScrollProgressIndicator } from './components/animations';
 import './styles/globals.css';
@@ -15,8 +13,7 @@ import './styles/globals.css';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-        {/* Scroll Progress Indicator */}
+      <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
         <ScrollProgressIndicator 
           color="gradient"
           height="h-1"
@@ -25,15 +22,13 @@ function App() {
         
         <Header />
         
-        <main className="pt-16"> {/* Add padding to account for fixed header */}
+        <main className="pt-16">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/experience" element={<ExperiencePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
-            {/* <Route path="/ai-labs" element={<AILabsPage />} />
-            <Route path="/creative" element={<CreativePage />} />
-            <Route path="/blog" element={<BlogPage />} /> */}
+            <Route path="/open-source" element={<OpenSourcePage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>

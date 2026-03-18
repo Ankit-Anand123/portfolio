@@ -1,0 +1,159 @@
+{
+  "project_name": "Luxury Data Scientist Portfolio",
+  "design_philosophy": {
+    "identity": "E1: The Anti-AI Designer - Luxury Tech Edition",
+    "core_principles": [
+      "Fusion over Imitation: Mix 'High Fashion' elegance with 'Data Science' precision.",
+      "Emotion First: Evoke 'Trust', 'Sophistication', and 'Intellect'.",
+      "Content is King: Your projects are the crown jewels; the UI is the velvet cushion.",
+      "Negative Space: Use 3x more whitespace than you think is necessary.",
+      "Contrast: Deep Obsidian backgrounds vs. Sharp Platinum text."
+    ],
+    "hall_of_shame": [
+      "No Glitch effects (too cyberpunk/cluttered).",
+      "No Particle Explosions (too noisy).",
+      "No 'Matrix' green code rain.",
+      "No simultaneous rainbow colors.",
+      "No 'Inter' for Headings."
+    ]
+  },
+  "typography": {
+    "font_family": {
+      "heading": "Playfair Display, serif",
+      "body": "Manrope, sans-serif",
+      "code": "JetBrains Mono, monospace"
+    },
+    "scale": {
+      "h1": "text-6xl md:text-8xl font-medium tracking-tight leading-none",
+      "h2": "text-4xl md:text-5xl font-medium tracking-tight",
+      "h3": "text-2xl md:text-3xl font-normal",
+      "body": "text-base md:text-lg text-gray-400 leading-relaxed",
+      "small": "text-sm text-gray-500 uppercase tracking-widest"
+    },
+    "installation": "Add these imports to index.css: @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Manrope:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap');"
+  },
+  "colors": {
+    "theme_strategy": "Luxury Dark Mode (Primary) + High-End Light Mode (Secondary)",
+    "palette": {
+      "dark": {
+        "background": "#050505",
+        "surface": "#0F0F0F",
+        "surface_highlight": "#1A1A1A",
+        "border": "rgba(255, 255, 255, 0.08)",
+        "text_primary": "#F5F5F7",
+        "text_secondary": "#A1A1AA",
+        "accent_primary": "#D4AF37",
+        "accent_glow": "rgba(212, 175, 55, 0.15)"
+      },
+      "light": {
+        "background": "#FAFAFA",
+        "surface": "#FFFFFF",
+        "surface_highlight": "#F4F4F5",
+        "border": "rgba(0, 0, 0, 0.06)",
+        "text_primary": "#18181B",
+        "text_secondary": "#52525B",
+        "accent_primary": "#Bfa030",
+        "accent_glow": "rgba(191, 160, 48, 0.1)"
+      }
+    },
+    "usage_rules": {
+      "gradients": "Use extremely subtle, noise-textured gradients. No harsh linear gradients.",
+      "borders": "1px borders with 5-10% opacity are key for the 'Technical' look."
+    }
+  },
+  "layout_strategy": {
+    "grid_system": "Bento Grid (CSS Grid)",
+    "spacing": "Relaxed. Use p-12, py-24 for section padding.",
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "modes": {
+      "marketing": "Asymmetric 'Tetris' Grid for projects.",
+      "dashboard": "Dense grid for 'Stats' section only."
+    }
+  },
+  "components": {
+    "ui_primitives": {
+      "buttons": {
+        "style": "Pill-shaped or slightly rounded (rounded-md).",
+        "interaction": "Magnetic effect on hover. Scale 1.05.",
+        "class": "px-8 py-3 bg-white text-black dark:bg-white dark:text-black font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+      },
+      "cards": {
+        "style": "Glassmorphism Lite. Dark background with slight transparency + blur.",
+        "border": "1px solid rgba(255,255,255,0.05).",
+        "hover": "Border becomes Gold (#D4AF37) with low opacity on hover. No lift."
+      },
+      "inputs": {
+        "style": "Underlined or Minimalist Box.",
+        "border": "Border-bottom only for a 'clean' look, or bg-surface-highlight with no border."
+      }
+    },
+    "feature_specific": {
+      "hero": {
+        "instruction": "Center-aligned or Split. Use 'FloatingProfilePhoto' but make it subtle. Replace 'RoleTypewriter' with a smooth fade-in text.",
+        "background": "Use a subtle 'MorphingBackground' (very slow, dark colors) or just a clean dark gradient with noise."
+      },
+      "stats": {
+        "instruction": "Minimalist numbers. Thin font weights. Label below number."
+      },
+      "projects": {
+        "instruction": "Bento Grid layout. Image covers 60% of card. Text below. Hover reveals tech stack."
+      },
+      "experience": {
+        "instruction": "Timeline with a 'Gold' center line. Cards alternating left/right on desktop."
+      },
+      "skills": {
+        "instruction": "Radar Chart is fine, but style it 'Technical' (thin lines, monochrome with 1 accent color). Avoid rainbow charts."
+      }
+    }
+  },
+  "motion": {
+    "library": "framer-motion",
+    "principles": [
+      "Smoothness > Speed. Use duration: 0.6 or 0.8.",
+      "Stagger children for lists.",
+      "Scroll Reveal: Use 'WhileInView' with viewport margin -10%."
+    ],
+    "approved_animations": [
+      "FadeInUp (y: 20 -> 0, opacity: 0 -> 1)",
+      "ScaleIn (scale: 0.95 -> 1)",
+      "Magnetic (for buttons)",
+      "Parallax (for Hero background)"
+    ],
+    "banned_animations": [
+      "Glitch",
+      "Shake",
+      "Flash",
+      "ParticleExplosion"
+    ]
+  },
+  "assets": {
+    "icons": "lucide-react (Stroke width: 1.5px for elegance)",
+    "images": {
+      "hero_bg": "Abstract data visualization, dark, luxurious, network nodes, gold lines",
+      "profile_placeholder": "Professional headshot, studio lighting, monochrome or desaturated"
+    }
+  },
+  "universal_guidelines": [
+    "You tend to converge toward generic, 'on distribution' outputs. Avoid this.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms.",
+    "You MUST NOT center align the app container. This disrupts the human natural reading flow of text.",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations.",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠 for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories = main agent will use placeholder text which is FORBIDDEN."
+  ],
+  "implementation_steps": [
+    "1. Update tailwind.config.js with new colors (Luxury Dark) and fonts (Playfair, Manrope).",
+    "2. Refactor 'globals.css' to add global styles (Noise texture, smooth scroll).",
+    "3. Revamp 'Hero' component: Remove Glitch, add clean typography.",
+    "4. Refactor 'Projects' to use Bento Grid.",
+    "5. Style 'Experience' section with a refined Timeline.",
+    "6. Polish 'Contact' form with minimal inputs.",
+    "7. Verify all 'Cyberpunk' elements are removed."
+  ]
+}

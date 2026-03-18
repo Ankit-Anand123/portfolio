@@ -51,11 +51,11 @@ export const ScrollProgressIndicator: React.FC<ScrollProgressIndicatorProps> = (
       case 'purple':
         return 'bg-purple-600';
       case 'gradient':
-        return 'bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500';
+        return 'bg-[#D4AF37]';
       case 'custom':
         return '';
       default:
-        return 'bg-gradient-to-r from-blue-500 to-purple-600';
+        return 'bg-[#D4AF37]';
     }
   };
 
@@ -63,7 +63,7 @@ export const ScrollProgressIndicator: React.FC<ScrollProgressIndicatorProps> = (
 
   return (
     <>
-      <div className={`fixed ${positionClass} left-0 w-full ${height} bg-gray-200 dark:bg-gray-700 z-50 ${className}`}>
+      <div className={`fixed ${positionClass} left-0 w-full ${height} bg-transparent z-50 ${className}`}>
         <div 
           className={`${height} ${getColorClass()} transition-all duration-150 ease-out`}
           style={{ 
