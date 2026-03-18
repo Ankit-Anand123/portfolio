@@ -52,7 +52,7 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="relative min-h-screen py-24 bg-[#050505]" data-testid="about-section">
+    <section id="about" className="relative min-h-screen py-24 bg-[var(--color-bg)]" data-testid="about-section">
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
@@ -60,10 +60,10 @@ const About: React.FC = () => {
         <FadeInUp>
           <div className="mb-16">
             <p className="font-manrope text-xs text-[#D4AF37] tracking-widest uppercase mb-4">About</p>
-            <h1 className="font-playfair text-5xl md:text-6xl font-medium text-[#F5F5F7] mb-6">
+            <h1 className="font-playfair text-5xl md:text-6xl font-medium text-[var(--color-text)] mb-6">
               Meet Ankit Anand
             </h1>
-            <p className="font-manrope text-[#A1A1AA] text-lg leading-relaxed max-w-2xl">
+            <p className="font-manrope text-[var(--color-muted)] text-lg leading-relaxed max-w-2xl">
               Dedicated Data Scientist with 6+ years of experience building data-intensive applications
               and helping businesses solve complex problems through analytics and machine learning.
             </p>
@@ -72,7 +72,7 @@ const About: React.FC = () => {
 
         {/* Tab Navigation */}
         <FadeInUp delay={100}>
-          <div className="flex space-x-1 mb-12 p-1 rounded-xl bg-[#0F0F0F] border border-white/5 w-fit">
+          <div className="flex space-x-1 mb-12 p-1 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] w-fit">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -81,7 +81,7 @@ const About: React.FC = () => {
                 className={`px-6 py-2.5 rounded-lg text-sm font-manrope font-medium transition-all duration-300 ${
                   activeTab === tab.id
                     ? 'bg-[#D4AF37] text-[#050505]'
-                    : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
+                    : 'text-[var(--color-muted)] hover:text-[var(--color-text)]'
                 }`}
               >
                 {tab.label}
@@ -100,19 +100,19 @@ const About: React.FC = () => {
               <FadeInUp>
                 <div
                   data-testid="bio-tab-content"
-                  className="rounded-2xl border border-white/5 bg-[#0F0F0F] p-8"
+                  className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8"
                 >
                   <div className="flex items-center space-x-4 mb-8">
-                    <div className="w-14 h-14 rounded-full bg-[#1A1A1A] border border-[#D4AF37]/20 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-[var(--color-surface2)] border border-[#D4AF37]/20 flex items-center justify-center">
                       <span className="font-playfair text-xl font-bold text-[#D4AF37]">AA</span>
                     </div>
                     <div>
-                      <h3 className="font-playfair text-xl font-medium text-[#F5F5F7]">Ankit Anand</h3>
+                      <h3 className="font-playfair text-xl font-medium text-[var(--color-text)]">Ankit Anand</h3>
                       <p className="font-manrope text-sm text-[#D4AF37]">Senior Data Scientist & Blogger</p>
                     </div>
                   </div>
 
-                  <p className="font-manrope text-[#A1A1AA] text-sm leading-relaxed mb-8">
+                  <p className="font-manrope text-[var(--color-muted)] text-sm leading-relaxed mb-8">
                     Dedicated and result-oriented Data Scientist and Blogger with a strong mathematical
                     background and 6+ years of experience in building data-intensive applications.
                     Proficient in descriptive analytics, predictive modeling, and data processing,
@@ -130,11 +130,11 @@ const About: React.FC = () => {
                         <span className="text-[#D4AF37]/60">{item.icon}</span>
                         {item.href ? (
                           <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
-                            className="font-manrope text-xs text-[#A1A1AA] hover:text-[#D4AF37] transition-colors duration-200 truncate">
+                            className="font-manrope text-xs text-[var(--color-muted)] hover:text-[#D4AF37] transition-colors duration-200 truncate">
                             {item.label}
                           </a>
                         ) : (
-                          <span className="font-manrope text-xs text-[#A1A1AA] truncate">{item.label}</span>
+                          <span className="font-manrope text-xs text-[var(--color-muted)] truncate">{item.label}</span>
                         )}
                       </div>
                     ))}
@@ -145,11 +145,11 @@ const About: React.FC = () => {
                       <div>
                         <div className="flex items-center space-x-2 mb-2">
                           <Building className="w-4 h-4 text-[#D4AF37]" strokeWidth={1.5} />
-                          <span className="font-manrope font-semibold text-[#F5F5F7] text-sm">
+                          <span className="font-manrope font-semibold text-[var(--color-text)] text-sm">
                             Bosch Global Software Technologies
                           </span>
                         </div>
-                        <p className="font-manrope text-xs text-[#A1A1AA] flex items-center space-x-3">
+                        <p className="font-manrope text-xs text-[var(--color-muted)] flex items-center space-x-3">
                           <span className="flex items-center"><MapPin className="w-3 h-3 mr-1" strokeWidth={1.5} />Coimbatore</span>
                           <span className="flex items-center"><Calendar className="w-3 h-3 mr-1" strokeWidth={1.5} />Sep 2023 – Present</span>
                         </p>
@@ -168,19 +168,19 @@ const About: React.FC = () => {
                   {focusAreas.map((area, i) => (
                     <div
                       key={i}
-                      className="group p-6 rounded-2xl border border-white/5 hover:border-[#D4AF37]/20 bg-[#0F0F0F] transition-all duration-300"
+                      className="group p-6 rounded-2xl border border-[var(--color-border)] hover:border-[#D4AF37]/20 bg-[var(--color-surface)] transition-all duration-300"
                     >
                       <div className="flex items-start space-x-4">
-                        <div className="p-2.5 rounded-lg bg-[#1A1A1A] text-[#D4AF37] shrink-0">{area.icon}</div>
+                        <div className="p-2.5 rounded-lg bg-[var(--color-surface2)] text-[#D4AF37] shrink-0">{area.icon}</div>
                         <div className="flex-1">
-                          <h4 className="font-manrope font-semibold text-[#F5F5F7] mb-2">{area.title}</h4>
-                          <p className="font-manrope text-[#A1A1AA] text-sm leading-relaxed mb-4">{area.description}</p>
+                          <h4 className="font-manrope font-semibold text-[var(--color-text)] mb-2">{area.title}</h4>
+                          <p className="font-manrope text-[var(--color-muted)] text-sm leading-relaxed mb-4">{area.description}</p>
                           <div className="space-y-2 mb-4">
                             <div className="flex justify-between text-xs font-manrope">
-                              <span className="text-[#A1A1AA]">Progress</span>
+                              <span className="text-[var(--color-muted)]">Progress</span>
                               <span className="text-[#D4AF37]">{area.progress}%</span>
                             </div>
-                            <div className="w-full bg-[#1A1A1A] rounded-full h-1">
+                            <div className="w-full bg-[var(--color-surface2)] rounded-full h-1">
                               <div
                                 className="h-1 rounded-full transition-all duration-1000"
                                 style={{ width: `${area.progress}%`, background: 'linear-gradient(90deg, #D4AF37, rgba(212,175,55,0.4))' }}
@@ -189,7 +189,7 @@ const About: React.FC = () => {
                           </div>
                           <div className="flex justify-between text-xs font-manrope">
                             <span className="text-[#D4AF37]/80">{area.impact}</span>
-                            <span className="text-[#A1A1AA]/60">{area.timeline}</span>
+                            <span className="text-[var(--color-muted)]/60">{area.timeline}</span>
                           </div>
                         </div>
                       </div>
@@ -204,11 +204,11 @@ const About: React.FC = () => {
               <FadeInUp>
                 <div
                   data-testid="education-tab-content"
-                  className="rounded-2xl border border-white/5 bg-[#0F0F0F] p-8"
+                  className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8"
                 >
                   <div className="flex items-center space-x-3 mb-8">
                     <GraduationCap className="w-6 h-6 text-[#D4AF37]" strokeWidth={1.5} />
-                    <h3 className="font-playfair text-2xl font-medium text-[#F5F5F7]">Education & Certifications</h3>
+                    <h3 className="font-playfair text-2xl font-medium text-[var(--color-text)]">Education & Certifications</h3>
                   </div>
 
                   <div className="space-y-4 mb-8">
@@ -216,10 +216,10 @@ const About: React.FC = () => {
                       { degree: 'Master of Science: ML & AI', school: 'Woolf University Canterbury, England', period: 'March 2022 – June 2024' },
                       { degree: 'B.Tech: Computer Science & Technology', school: 'Indira Gandhi Institute of Technology, Sarang', period: 'July 2014 – June 2018', extra: 'CGPA: 8.23' },
                     ].map((edu, i) => (
-                      <div key={i} className="p-6 rounded-xl border border-white/5 hover:border-[#D4AF37]/15 transition-colors duration-300">
-                        <div className="font-manrope font-semibold text-[#F5F5F7] mb-1">{edu.degree}</div>
+                      <div key={i} className="p-6 rounded-xl border border-[var(--color-border)] hover:border-[#D4AF37]/15 transition-colors duration-300">
+                        <div className="font-manrope font-semibold text-[var(--color-text)] mb-1">{edu.degree}</div>
                         <div className="font-manrope text-sm text-[#D4AF37] mb-2">{edu.school}</div>
-                        <div className="flex justify-between font-manrope text-xs text-[#A1A1AA]">
+                        <div className="flex justify-between font-manrope text-xs text-[var(--color-muted)]">
                           <span>{edu.period}</span>
                           {edu.extra && <span>{edu.extra}</span>}
                         </div>
@@ -227,7 +227,7 @@ const About: React.FC = () => {
                     ))}
                   </div>
 
-                  <h4 className="font-manrope font-semibold text-[#F5F5F7] text-sm mb-4 flex items-center">
+                  <h4 className="font-manrope font-semibold text-[var(--color-text)] text-sm mb-4 flex items-center">
                     <Award className="w-4 h-4 mr-2 text-[#D4AF37]" strokeWidth={1.5} />
                     Professional Certifications
                   </h4>
@@ -237,17 +237,17 @@ const About: React.FC = () => {
                       'Machine Learning Specialization – Coursera',
                       'Advanced Analytics & Data Science Professional',
                     ].map((cert, i) => (
-                      <div key={i} className="flex items-center space-x-3 p-3 rounded-lg bg-[#1A1A1A]">
+                      <div key={i} className="flex items-center space-x-3 p-3 rounded-lg bg-[var(--color-surface2)]">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                        <span className="font-manrope text-sm text-[#A1A1AA]">{cert}</span>
+                        <span className="font-manrope text-sm text-[var(--color-muted)]">{cert}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="p-5 rounded-xl border border-white/5 bg-[#1A1A1A]">
-                    <h5 className="font-manrope font-semibold text-[#F5F5F7] text-sm mb-2">Research & Publications</h5>
-                    <p className="font-manrope text-sm text-[#A1A1AA] leading-relaxed">
-                      <strong className="text-[#F5F5F7]">"Analysis of the Attention Level of the Human Body in Different Forms"</strong>
+                  <div className="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface2)]">
+                    <h5 className="font-manrope font-semibold text-[var(--color-text)] text-sm mb-2">Research & Publications</h5>
+                    <p className="font-manrope text-sm text-[var(--color-muted)] leading-relaxed">
+                      <strong className="text-[var(--color-text)]">"Analysis of the Attention Level of the Human Body in Different Forms"</strong>
                       <br />Published in Springer Nature, September 2018. Research focusing on human attention analysis using ML techniques.
                     </p>
                   </div>
@@ -259,8 +259,8 @@ const About: React.FC = () => {
           {/* Right — Skills Radar */}
           <div className="lg:sticky lg:top-24">
             <FadeInRight>
-              <div className="rounded-2xl border border-white/5 bg-[#0F0F0F] p-8">
-                <h3 className="font-playfair text-xl font-medium text-[#F5F5F7] mb-6 text-center">
+              <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8">
+                <h3 className="font-playfair text-xl font-medium text-[var(--color-text)] mb-6 text-center">
                   Skills Radar
                 </h3>
 
@@ -319,7 +319,7 @@ const About: React.FC = () => {
                             cx={x} cy={y}
                             r={selectedSkill === skill.category ? 6 : 4}
                             fill="#D4AF37"
-                            stroke="#050505"
+                            stroke="var(--color-bg)"
                             strokeWidth={2}
                             className="cursor-pointer transition-all duration-200"
                             onClick={() => setSelectedSkill(selectedSkill === skill.category ? null : skill.category)}
@@ -363,18 +363,18 @@ const About: React.FC = () => {
                             <div className="flex items-center space-x-3">
                               <span className="text-[#D4AF37]">{skill.icon}</span>
                               <div>
-                                <span className="font-manrope font-semibold text-[#F5F5F7] text-sm">{skill.category}</span>
-                                <div className="font-manrope text-xs text-[#A1A1AA]">
+                                <span className="font-manrope font-semibold text-[var(--color-text)] text-sm">{skill.category}</span>
+                                <div className="font-manrope text-xs text-[var(--color-muted)]">
                                   {skill.level >= 90 ? 'Expert' : skill.level >= 80 ? 'Advanced' : 'Proficient'}
                                 </div>
                               </div>
                             </div>
                             <span className="font-playfair text-xl text-[#D4AF37]">{skill.level}%</span>
                           </div>
-                          <p className="font-manrope text-xs text-[#A1A1AA] mb-3 leading-relaxed">{skill.description}</p>
+                          <p className="font-manrope text-xs text-[var(--color-muted)] mb-3 leading-relaxed">{skill.description}</p>
                           <div className="flex flex-wrap gap-1.5">
                             {skill.skills.map((s, j) => (
-                              <span key={j} className="px-2 py-1 rounded-full border border-white/8 text-xs font-manrope text-[#A1A1AA]">{s}</span>
+                              <span key={j} className="px-2 py-1 rounded-full border border-[var(--color-border)] text-xs font-manrope text-[var(--color-muted)]">{s}</span>
                             ))}
                           </div>
                         </div>
@@ -382,23 +382,23 @@ const About: React.FC = () => {
                     })()}
                   </ScaleIn>
                 ) : (
-                  <p className="text-center font-manrope text-xs text-[#A1A1AA]/60 mt-2">
+                  <p className="text-center font-manrope text-xs text-[var(--color-muted)]/60 mt-2">
                     Click on a radar point to see details
                   </p>
                 )}
 
-                <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/5">
+                <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-[var(--color-border)]">
                   <div className="text-center">
                     <div className="font-playfair text-xl text-[#D4AF37] font-medium">
                       {Math.round(skillsData.reduce((a, s) => a + s.level, 0) / skillsData.length)}%
                     </div>
-                    <div className="font-manrope text-xs text-[#A1A1AA]">Overall Average</div>
+                    <div className="font-manrope text-xs text-[var(--color-muted)]">Overall Average</div>
                   </div>
                   <div className="text-center">
                     <div className="font-playfair text-xl text-[#D4AF37] font-medium">
                       {skillsData.filter(s => s.level >= 85).length}/{skillsData.length}
                     </div>
-                    <div className="font-manrope text-xs text-[#A1A1AA]">Expert Level</div>
+                    <div className="font-manrope text-xs text-[var(--color-muted)]">Expert Level</div>
                   </div>
                 </div>
               </div>
@@ -413,10 +413,10 @@ const About: React.FC = () => {
               <div
                 key={i}
                 data-testid={`about-stat-${i}`}
-                className="p-6 rounded-2xl border border-white/5 bg-[#0F0F0F] text-center"
+                className="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] text-center"
               >
                 <div className="font-playfair text-4xl font-medium text-[#D4AF37] mb-2">{stat.number}</div>
-                <div className="font-manrope text-sm text-[#A1A1AA]">{stat.label}</div>
+                <div className="font-manrope text-sm text-[var(--color-muted)]">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -425,19 +425,23 @@ const About: React.FC = () => {
         {/* CTA */}
         <FadeInUp>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
+            <a
+              href="/resume.pdf"
+              download="Ankit_Anand_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               data-testid="about-download-btn"
               className="inline-flex items-center justify-center px-8 py-3.5 bg-[#D4AF37] text-[#050505] font-manrope font-semibold text-sm tracking-wide rounded-full transition-all duration-300 hover:bg-[#F0D060] hover:shadow-[0_0_24px_rgba(212,175,55,0.3)]"
             >
               <Download className="w-4 h-4 mr-2" strokeWidth={2} />
               Download Resume
-            </button>
+            </a>
             <a
               href="https://linkedin.com/in/ankitanand29"
               target="_blank"
               rel="noopener noreferrer"
               data-testid="about-linkedin-btn"
-              className="inline-flex items-center justify-center px-8 py-3.5 border border-white/10 text-[#F5F5F7] font-manrope font-medium text-sm tracking-wide rounded-full transition-all duration-300 hover:border-[#D4AF37]/40 hover:text-[#D4AF37]"
+              className="inline-flex items-center justify-center px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-text)] font-manrope font-medium text-sm tracking-wide rounded-full transition-all duration-300 hover:border-[#D4AF37]/40 hover:text-[#D4AF37]"
             >
               <Linkedin className="w-4 h-4 mr-2" strokeWidth={1.5} />
               View LinkedIn

@@ -3,7 +3,7 @@ import { Contact } from '../components/sections/Contact';
 
 export const ContactPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-[var(--color-bg)]">
       <Contact className="pt-20" />
     </div>
   );

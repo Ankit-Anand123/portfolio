@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FolderOpen, Code, ExternalLink, X, Award, Calendar, Building, Search } from 'lucide-react';
+import { FolderOpen, Code, ExternalLink, X, Award, Calendar, Building, Search, Github } from 'lucide-react';
 import { FadeInUp, FadeInLeft, FadeInRight } from '../../animations';
 
 export interface ProjectData {
@@ -7,7 +7,7 @@ export interface ProjectData {
   title: string;
   description: string;
   longDescription: string;
-  category: 'machine-learning' | 'web-development' | 'data-analysis' | 'computer-vision' | 'current';
+  category: 'machine-learning' | 'web-development' | 'data-analysis' | 'computer-vision' | 'open-source';
   status: 'completed' | 'ongoing' | 'research';
   technologies: string[];
   duration: string;
@@ -16,9 +16,103 @@ export interface ProjectData {
   metrics?: { label: string; value: string; type: string }[];
   impact?: string;
   featured?: boolean;
+  github?: string;
+  pypi?: string;
 }
 
 const projectsData: ProjectData[] = [
+  {
+    id: 'easybot',
+    title: 'EasyBot — Agentic AI Chatbot',
+    description: 'Agentic AI chatbot with LangGraph multi-agent orchestration, SQL dry-run, and Chainlit UI at Bosch.',
+    longDescription: 'Designed and built EasyBot, an agentic AI chatbot with secure AI-to-data architecture. Implemented a multi-agent system using LangGraph with advanced utility features including SQL dry-run, guided query prompting, and multi-use-case support. Developed a parallel Agno-based agent and delivered via Chainlit UI. Significantly improved analysis turnaround time and reduced dependency on manual data queries.',
+    category: 'machine-learning',
+    status: 'ongoing',
+    technologies: ['Python', 'LangGraph', 'LangChain', 'Chainlit', 'SQL', 'Agentic AI', 'Multi-Agent'],
+    duration: '2024 – Present',
+    company: 'Bosch Global Software Technologies',
+    achievements: [
+      'Multi-agent system with LangGraph orchestration',
+      'SQL dry-run for safe query validation',
+      'Improved analysis turnaround time significantly',
+      'Reduced manual data dependency',
+    ],
+    metrics: [
+      { label: 'Agents Built', value: '2+', type: 'performance' },
+      { label: 'Turnaround', value: '3x faster', type: 'impact' },
+    ],
+    impact: 'Transformed how Bosch teams interact with data through natural language.',
+    featured: true,
+  },
+  {
+    id: 'hypotestx',
+    title: 'HypoTestX — Python Library',
+    description: 'Open-source Python library for natural language hypothesis testing with 12 statistical tests and LLM plug-in backends.',
+    longDescription: 'A Python library for hypothesis testing, statistical inference, and p-value based statistical analysis with a simple and intuitive API. Features natural language interface (analyze()), pure Python math core, and plug-in LLM backends (OpenAI, Gemini, Groq, Ollama, HuggingFace, etc.). Supports 12+ statistical tests with effect sizes, confidence intervals, and power analysis.',
+    category: 'open-source',
+    status: 'completed',
+    technologies: ['Python', 'Statistical Testing', 'LLM Integration', 'Pure Python', 'pytest', 'Sphinx'],
+    duration: 'Jul 2025 – Present',
+    company: 'Open Source (Personal)',
+    achievements: [
+      '532 tests passing, 79% code coverage',
+      '12+ statistical tests (t-tests, ANOVA, Chi-square, correlation)',
+      'Plug-in LLM backends (Gemini, Groq, OpenAI, Ollama)',
+      'Natural language analyze() interface',
+      'Zero mandatory external dependencies',
+    ],
+    metrics: [
+      { label: 'Tests Passing', value: '532', type: 'quality' },
+      { label: 'Version', value: 'v1.0.6', type: 'performance' },
+    ],
+    impact: 'Making statistical testing accessible via plain English queries.',
+    featured: true,
+    github: 'https://github.com/Ankit-Anand123/HypoTestX',
+    pypi: 'https://pypi.org/project/hypotestx/',
+  },
+  {
+    id: 'unichunk',
+    title: 'UNICHUNK PDF Insight Assistant',
+    description: 'RAG-based PDF analysis system using LangGraph, FAISS, and Ollama for offline document intelligence.',
+    longDescription: 'Retrieval-augmented generation system that ingests PDFs and answers questions via query classification and ingestion/retrieval pipeline built with LangGraph and FAISS. Integrated local LLM inference via Ollama, Sentence Transformer embeddings for offline analysis, and a Streamlit front-end for document uploading and displaying highlighted sections, tables, and plots.',
+    category: 'machine-learning',
+    status: 'completed',
+    technologies: ['Python', 'LangGraph', 'FAISS', 'Ollama', 'Sentence Transformers', 'Streamlit', 'RAG'],
+    duration: '2024',
+    company: 'Personal Project',
+    achievements: [
+      'LangGraph modular nodes for chunking, embedding, retrieval',
+      'Fully offline local LLM inference via Ollama',
+      'Streamlit UI with highlighted sections and plots',
+      'Poetry-based deployment structure',
+    ],
+    metrics: [
+      { label: 'Offline Capable', value: '100%', type: 'performance' },
+      { label: 'Architecture', value: 'RAG', type: 'performance' },
+    ],
+    featured: false,
+  },
+  {
+    id: 'multi-mcp',
+    title: 'Multi MCP Platform — Enterprise Integration',
+    description: 'Unified enterprise platform for querying Jira, Confluence, and Bitbucket via FastAPI + React intelligent orchestrator.',
+    longDescription: 'Unified enterprise integration platform for querying documentation, managing issues, and analyzing code reviews across Jira, Confluence, and Bitbucket. Python FastAPI backend with an intelligent orchestrator and React/Vite frontend for seamless team interaction. Features real-world usage examples and comprehensive environment setup instructions.',
+    category: 'web-development',
+    status: 'completed',
+    technologies: ['Python', 'FastAPI', 'React', 'Vite', 'Jira API', 'Confluence', 'Bitbucket'],
+    duration: '2024',
+    company: 'Personal Project',
+    achievements: [
+      'Unified Jira + Confluence + Bitbucket integration',
+      'FastAPI backend with intelligent orchestration',
+      'React/Vite frontend for team usage',
+    ],
+    metrics: [
+      { label: 'Integrations', value: '3', type: 'performance' },
+      { label: 'Stack', value: 'Full-Stack', type: 'performance' },
+    ],
+    featured: false,
+  },
   {
     id: 'steel-forecasting',
     title: 'Steel Price Forecasting',
@@ -32,7 +126,27 @@ const projectsData: ProjectData[] = [
     achievements: ['23% MAPE accuracy in price forecasting', 'Identified 3 historical anomalies', 'Optimized procurement decisions'],
     metrics: [{ label: 'MAPE Accuracy', value: '23%', type: 'accuracy' }, { label: 'Confidence', value: '90%', type: 'performance' }],
     impact: 'Revolutionized steel procurement with advanced forecasting.',
-    featured: true,
+    featured: false,
+  },
+  {
+    id: 'wafemap',
+    title: 'Wafemap Localization',
+    description: 'Wafer defect localization using 2D Gaussian KDE, DBSCAN clustering, and polygon alpha-shape modeling.',
+    longDescription: 'Designed a wafermap localization algorithm that transforms classified wafer maps into binary spatial grids. Applied 2D Gaussian Kernel Density Estimation (KDE), density-based thresholding, DBSCAN clustering, and modeled cluster geometry using polygon/alpha-shape methods for precise defect localization.',
+    category: 'machine-learning',
+    status: 'completed',
+    technologies: ['Python', 'KDE', 'DBSCAN', 'Clustering', 'Alpha-Shape', 'Computer Vision'],
+    duration: '2023 – 2024',
+    company: 'Bosch Global Software Technologies',
+    achievements: [
+      'Binary spatial grid transformation of wafer maps',
+      '2D Gaussian KDE for density estimation',
+      'DBSCAN cluster geometry modeling',
+    ],
+    metrics: [
+      { label: 'Algorithm', value: 'KDE+DBSCAN', type: 'performance' },
+    ],
+    featured: false,
   },
   {
     id: 'shipment-predictor',
@@ -41,86 +155,58 @@ const projectsData: ProjectData[] = [
     longDescription: 'Built a machine learning model to predict shipment delays using historical data, weather patterns, and logistics variables.',
     category: 'machine-learning',
     status: 'completed',
-    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Flask', 'APIs'],
+    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Flask', 'Logistic Regression'],
     duration: 'Mar 2023 – Jun 2023',
     company: 'Innova Solutions',
-    achievements: ['93% accuracy in delay prediction', 'Reduced operational costs by 15%', 'Improved customer satisfaction'],
+    achievements: ['93% accuracy in delay prediction', 'Reduced operational costs by 15%', 'Flask API for integration'],
     metrics: [{ label: 'Prediction Accuracy', value: '93%', type: 'accuracy' }, { label: 'Cost Reduction', value: '15%', type: 'impact' }],
     featured: false,
   },
   {
     id: 'patient-risk-assessment',
     title: 'Patient Risk Assessment',
-    description: 'Healthcare analytics platform with 82% accuracy in predicting patient readmission risks.',
-    longDescription: 'Developed a risk assessment system for healthcare providers to predict patient readmission likelihood.',
+    description: 'Healthcare analytics platform with 82% accuracy in predicting patient hospitalization risks.',
+    longDescription: 'Developed a risk assessment system for healthcare providers (Therapy Management Corporation) to predict patient hospitalization likelihood and recommend treatment plans.',
     category: 'machine-learning',
     status: 'completed',
-    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Healthcare APIs', 'ML'],
+    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Feature Engineering', 'Classification'],
     duration: 'Jan 2023 – Apr 2023',
     company: 'Innova Solutions (Humana)',
-    achievements: ['82% accuracy in risk prediction', 'Improved patient care outcomes', 'Reduced readmissions by 12%'],
-    metrics: [{ label: 'Risk Accuracy', value: '82%', type: 'accuracy' }, { label: 'Readmission Reduction', value: '12%', type: 'impact' }],
+    achievements: ['82% accuracy in risk prediction', 'Treatment recommendation model', 'Feature selection expertise'],
+    metrics: [{ label: 'Risk Accuracy', value: '82%', type: 'accuracy' }],
     featured: false,
   },
   {
     id: 'library-automation',
     title: 'Library Automation System',
     description: 'Face recognition and QR code-based library management with 95% recognition accuracy.',
-    longDescription: 'Developed a comprehensive library automation system using face recognition and QR code technology.',
+    longDescription: 'Developed a comprehensive library automation system using face recognition and QR code technology with Python and Flask backend.',
     category: 'computer-vision',
     status: 'completed',
-    technologies: ['Python', 'OpenCV', 'Face Recognition', 'QR Code', 'Pyzbar'],
+    technologies: ['Python', 'OpenCV', 'Face Recognition', 'QR Code', 'Pyzbar', 'Flask'],
     duration: 'Sep 2022 – Dec 2022',
     company: 'Innova Solutions',
     achievements: ['95% face recognition accuracy', 'Automated checkout/return', 'Reduced manual workload by 80%'],
     metrics: [{ label: 'Recognition Accuracy', value: '95%', type: 'accuracy' }, { label: 'Automation', value: '80%', type: 'performance' }],
-    featured: true,
-  },
-  {
-    id: 'sensor-humidity-analysis',
-    title: 'Sensor Humidity Dashboard',
-    description: 'Tableau dashboard for IoT sensor data with PCA and UMAP dimensionality reduction.',
-    longDescription: 'Created an advanced analytics dashboard for IoT sensor data with unsupervised learning and interactive visualizations.',
-    category: 'data-analysis',
-    status: 'ongoing',
-    technologies: ['Python', 'Tableau', 'PCA', 'UMAP', 'Clustering', 'IoT'],
-    duration: 'Sep 2023 – Present',
-    company: 'Bosch Global Software Technologies',
-    achievements: ['PCA and UMAP dimensionality reduction', 'Interactive Tableau dashboards', 'Sensor anomaly identification'],
-    metrics: [{ label: 'Processing Speed', value: '3x', type: 'performance' }, { label: 'Anomaly Detection', value: '99%', type: 'accuracy' }],
     featured: false,
   },
   {
     id: 'anomaly-detection-suite',
     title: 'Anomaly Detection Suite',
-    description: 'Multi-algorithm anomaly detection with 94% precision and 25% false positive reduction.',
-    longDescription: 'Developed a robust anomaly detection system using multiple ML algorithms including tree-based classifiers.',
+    description: 'Multi-algorithm anomaly detection with supervised + unsupervised techniques at 94% precision.',
+    longDescription: 'Developed a robust anomaly detection system using multiple ML algorithms including tree-based classifiers, clustering, RANSAC, and Elliptical Envelope for sensor humidity fail analysis at Bosch.',
     category: 'machine-learning',
     status: 'ongoing',
-    technologies: ['Python', 'Scikit-learn', 'Tree Classifiers', 'RANSAC', 'Clustering'],
+    technologies: ['Python', 'Scikit-learn', 'Tree Classifiers', 'RANSAC', 'Clustering', 'Elliptical Envelope'],
     duration: 'Oct 2023 – Present',
     company: 'Bosch Global Software Technologies',
     achievements: ['Multiple anomaly detection algorithms', '94% detection precision', 'Reduced false positives by 25%'],
-    metrics: [{ label: 'Detection Precision', value: '94%', type: 'accuracy' }, { label: 'False Positive Reduction', value: '25%', type: 'performance' }],
-    featured: false,
-  },
-  {
-    id: 'kpi-dashboard',
-    title: 'KPI Performance Dashboard',
-    description: 'Real-time KPI monitoring with <2s response time and 99.5% data accuracy.',
-    longDescription: 'Comprehensive KPI monitoring dashboard with real-time processing and automated reporting.',
-    category: 'data-analysis',
-    status: 'ongoing',
-    technologies: ['Python', 'Tableau', 'KPI Monitoring', 'Real-time Analytics'],
-    duration: 'Nov 2023 – Present',
-    company: 'Bosch Global Software Technologies',
-    achievements: ['Interactive KPI dashboards', 'Real-time data processing', 'Automated reporting'],
-    metrics: [{ label: 'Response Time', value: '<2s', type: 'performance' }, { label: 'Data Accuracy', value: '99.5%', type: 'accuracy' }],
+    metrics: [{ label: 'Detection Precision', value: '94%', type: 'accuracy' }],
     featured: false,
   },
 ];
 
-type CategoryType = 'all' | 'machine-learning' | 'web-development' | 'data-analysis' | 'computer-vision' | 'current';
+type CategoryType = 'all' | 'machine-learning' | 'web-development' | 'data-analysis' | 'computer-vision' | 'open-source';
 
 const statusColors: Record<string, string> = {
   completed: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10',
@@ -141,12 +227,13 @@ export const Projects: React.FC = () => {
     return matchCat && matchSearch;
   });
 
-  const categories: { id: CategoryType; label: string }[] = [
-    { id: 'all', label: 'All' },
-    { id: 'machine-learning', label: 'ML' },
-    { id: 'data-analysis', label: 'Analytics' },
-    { id: 'computer-vision', label: 'Vision' },
-    { id: 'web-development', label: 'Web Dev' },
+  const categories: { id: CategoryType; label: string; count: number }[] = [
+    { id: 'all', label: 'All', count: projectsData.length },
+    { id: 'machine-learning', label: 'ML & AI', count: projectsData.filter(p => p.category === 'machine-learning').length },
+    { id: 'open-source', label: 'Open Source', count: projectsData.filter(p => p.category === 'open-source').length },
+    { id: 'data-analysis', label: 'Analytics', count: projectsData.filter(p => p.category === 'data-analysis').length },
+    { id: 'computer-vision', label: 'Vision', count: projectsData.filter(p => p.category === 'computer-vision').length },
+    { id: 'web-development', label: 'Web Dev', count: projectsData.filter(p => p.category === 'web-development').length },
   ];
 
   const stats = [
@@ -157,16 +244,16 @@ export const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" data-testid="projects-section" className="relative min-h-screen py-24 bg-[#050505]">
+    <section id="projects" data-testid="projects-section" className="relative min-h-screen py-24 bg-[var(--color-bg)]">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* Header */}
         <FadeInUp>
           <div className="mb-16">
             <p className="font-manrope text-xs text-[#D4AF37] tracking-widest uppercase mb-4">Portfolio</p>
-            <h1 className="font-playfair text-5xl md:text-6xl font-medium text-[#F5F5F7] mb-6">Projects Showcase</h1>
-            <p className="font-manrope text-[#A1A1AA] text-lg leading-relaxed max-w-2xl">
-              Transforming complex data into actionable insights through innovative machine learning solutions.
+            <h1 className="font-playfair text-5xl md:text-6xl font-medium text-[var(--color-text)] mb-6">Projects Showcase</h1>
+            <p className="font-manrope text-[var(--color-muted)] text-lg leading-relaxed max-w-2xl">
+              Transforming complex data into actionable insights — from production ML systems to open-source tools.
             </p>
           </div>
         </FadeInUp>
@@ -175,9 +262,9 @@ export const Projects: React.FC = () => {
         <FadeInUp delay={100}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {stats.map((s, i) => (
-              <div key={i} data-testid={`project-stat-${i}`} className="p-6 rounded-2xl border border-white/5 bg-[#0F0F0F] text-center">
+              <div key={i} data-testid={`project-stat-${i}`} className="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] text-center">
                 <div className="font-playfair text-4xl font-medium text-[#D4AF37] mb-2">{s.value}</div>
-                <div className="font-manrope text-sm text-[#A1A1AA]">{s.label}</div>
+                <div className="font-manrope text-sm text-[var(--color-muted)]">{s.label}</div>
               </div>
             ))}
           </div>
@@ -186,7 +273,7 @@ export const Projects: React.FC = () => {
         {/* Filter + Search */}
         <FadeInUp delay={150}>
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <div className="flex space-x-1 p-1 rounded-xl bg-[#0F0F0F] border border-white/5 overflow-x-auto">
+            <div className="flex space-x-1 p-1 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] overflow-x-auto">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
@@ -195,22 +282,23 @@ export const Projects: React.FC = () => {
                   className={`px-4 py-2 rounded-lg text-sm font-manrope font-medium whitespace-nowrap transition-all duration-300 ${
                     selectedCategory === cat.id
                       ? 'bg-[#D4AF37] text-[#050505]'
-                      : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
+                      : 'text-[var(--color-muted)] hover:text-[var(--color-text)]'
                   }`}
                 >
                   {cat.label}
+                  <span className="ml-1.5 text-xs opacity-60">({cat.count})</span>
                 </button>
               ))}
             </div>
             <div className="relative flex-1 max-w-xs">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A1A1AA]" strokeWidth={1.5} />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-muted)]" strokeWidth={1.5} />
               <input
                 type="text"
                 placeholder="Search projects or tech..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 data-testid="project-search"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-white/8 bg-[#0F0F0F] text-[#F5F5F7] text-sm font-manrope placeholder-[#A1A1AA]/50 focus:border-[#D4AF37]/30 focus:outline-none transition-colors duration-200"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] text-sm font-manrope placeholder-[var(--color-muted)] focus:border-[#D4AF37]/30 focus:outline-none transition-colors duration-200"
               />
             </div>
           </div>
@@ -223,7 +311,7 @@ export const Projects: React.FC = () => {
               <FadeInUp key={project.id} delay={i * 80}>
                 <div
                   data-testid={`project-card-${project.id}`}
-                  className="group relative p-6 rounded-2xl border border-white/5 hover:border-[#D4AF37]/20 bg-[#0F0F0F] transition-all duration-500 cursor-pointer hover:bg-[#1A1A1A]/60"
+                  className="group relative p-6 rounded-2xl border border-[var(--color-border)] hover:border-[#D4AF37]/20 bg-[var(--color-surface)] transition-all duration-500 cursor-pointer"
                   onClick={() => setSelectedProject(project)}
                 >
                   {/* Featured badge */}
@@ -233,16 +321,21 @@ export const Projects: React.FC = () => {
                     </div>
                   )}
 
-                  <div className="mb-4">
+                  <div className="mb-4 flex items-center gap-2">
                     <span className={`inline-flex px-2.5 py-1 rounded-full border text-xs font-manrope capitalize ${statusColors[project.status]}`}>
                       {project.status}
                     </span>
+                    {project.category === 'open-source' && (
+                      <span className="inline-flex px-2.5 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-xs font-manrope text-purple-400">
+                        Open Source
+                      </span>
+                    )}
                   </div>
 
-                  <h3 className="font-playfair text-xl font-medium text-[#F5F5F7] mb-3 group-hover:text-[#D4AF37] transition-colors duration-300">
+                  <h3 className="font-playfair text-xl font-medium text-[var(--color-text)] mb-3 group-hover:text-[#D4AF37] transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="font-manrope text-[#A1A1AA] text-sm leading-relaxed mb-5">{project.description}</p>
+                  <p className="font-manrope text-[var(--color-muted)] text-sm leading-relaxed mb-5">{project.description}</p>
 
                   {/* Metrics row */}
                   {project.metrics && (
@@ -250,7 +343,7 @@ export const Projects: React.FC = () => {
                       {project.metrics.slice(0, 2).map((m, j) => (
                         <div key={j}>
                           <div className="font-playfair text-lg text-[#D4AF37] font-medium">{m.value}</div>
-                          <div className="font-manrope text-xs text-[#A1A1AA]">{m.label}</div>
+                          <div className="font-manrope text-xs text-[var(--color-muted)]">{m.label}</div>
                         </div>
                       ))}
                     </div>
@@ -258,18 +351,18 @@ export const Projects: React.FC = () => {
 
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.technologies.slice(0, 4).map((tech) => (
-                      <span key={tech} className="px-2 py-1 border border-white/6 rounded-full text-xs font-manrope text-[#A1A1AA]">
+                      <span key={tech} className="px-2 py-1 border border-[var(--color-border)] rounded-full text-xs font-manrope text-[var(--color-muted)]">
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 4 && (
-                      <span className="px-2 py-1 text-xs font-manrope text-[#A1A1AA]/60">
+                      <span className="px-2 py-1 text-xs font-manrope text-[var(--color-muted)]/60">
                         +{project.technologies.length - 4}
                       </span>
                     )}
                   </div>
 
-                  <div className="flex items-center text-xs font-manrope text-[#A1A1AA]/60">
+                  <div className="flex items-center text-xs font-manrope text-[var(--color-muted)]/60">
                     <Calendar className="w-3.5 h-3.5 mr-1.5" strokeWidth={1.5} />{project.duration}
                   </div>
 
@@ -281,11 +374,11 @@ export const Projects: React.FC = () => {
         ) : (
           <FadeInUp>
             <div className="text-center py-20">
-              <FolderOpen className="w-12 h-12 text-[#A1A1AA]/30 mx-auto mb-4" strokeWidth={1.5} />
-              <p className="font-manrope text-[#A1A1AA] mb-6">No projects match your filters.</p>
+              <FolderOpen className="w-12 h-12 text-[var(--color-muted)]/30 mx-auto mb-4" strokeWidth={1.5} />
+              <p className="font-manrope text-[var(--color-muted)] mb-6">No projects match your filters.</p>
               <button
                 onClick={() => { setSelectedCategory('all'); setSearchTerm(''); }}
-                className="px-6 py-2.5 border border-white/10 text-[#F5F5F7] font-manrope text-sm rounded-full hover:border-[#D4AF37]/40 transition-all duration-300"
+                className="px-6 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-manrope text-sm rounded-full hover:border-[#D4AF37]/40 transition-all duration-300"
               >
                 Clear Filters
               </button>
@@ -296,8 +389,8 @@ export const Projects: React.FC = () => {
         {/* CTA */}
         <FadeInUp>
           <div className="text-center mt-20">
-            <h3 className="font-playfair text-3xl font-medium text-[#F5F5F7] mb-4">Ready to Build Something Amazing?</h3>
-            <p className="font-manrope text-[#A1A1AA] mb-8 max-w-xl mx-auto">
+            <h3 className="font-playfair text-3xl font-medium text-[var(--color-text)] mb-4">Ready to Build Something Amazing?</h3>
+            <p className="font-manrope text-[var(--color-muted)] mb-8 max-w-xl mx-auto">
               Let's collaborate on your next data science or machine learning project.
             </p>
             <a
@@ -320,57 +413,97 @@ export const Projects: React.FC = () => {
         >
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
           <div
-            className="relative z-10 max-w-2xl w-full max-h-[85vh] overflow-y-auto rounded-2xl border border-white/8 bg-[#0F0F0F] p-8"
+            className="relative z-10 max-w-2xl w-full max-h-[85vh] overflow-y-auto rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedProject(null)}
               data-testid="modal-close-btn"
-              className="absolute top-4 right-4 p-2 rounded-full text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-white/5 transition-all duration-200"
+              className="absolute top-4 right-4 p-2 rounded-full text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface2)] transition-all duration-200"
             >
               <X className="w-5 h-5" strokeWidth={1.5} />
             </button>
 
-            <span className={`inline-flex px-2.5 py-1 rounded-full border text-xs font-manrope capitalize mb-4 ${statusColors[selectedProject.status]}`}>
-              {selectedProject.status}
-            </span>
+            <div className="flex items-center gap-2 mb-4">
+              <span className={`inline-flex px-2.5 py-1 rounded-full border text-xs font-manrope capitalize ${statusColors[selectedProject.status]}`}>
+                {selectedProject.status}
+              </span>
+              {selectedProject.category === 'open-source' && (
+                <span className="inline-flex px-2.5 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-xs font-manrope text-purple-400">
+                  Open Source
+                </span>
+              )}
+            </div>
 
-            <h2 className="font-playfair text-2xl md:text-3xl font-medium text-[#F5F5F7] mb-3">{selectedProject.title}</h2>
-            <div className="flex flex-wrap gap-4 text-xs font-manrope text-[#A1A1AA] mb-6">
+            <h2 className="font-playfair text-2xl md:text-3xl font-medium text-[var(--color-text)] mb-3">{selectedProject.title}</h2>
+            <div className="flex flex-wrap gap-4 text-xs font-manrope text-[var(--color-muted)] mb-4">
               <span className="flex items-center space-x-1"><Calendar className="w-3.5 h-3.5" strokeWidth={1.5} /><span>{selectedProject.duration}</span></span>
               <span className="flex items-center space-x-1"><Building className="w-3.5 h-3.5" strokeWidth={1.5} /><span>{selectedProject.company}</span></span>
             </div>
 
-            <p className="font-manrope text-[#A1A1AA] text-sm leading-relaxed mb-6">{selectedProject.longDescription}</p>
+            {/* GitHub / PyPI links */}
+            {(selectedProject.github || selectedProject.pypi) && (
+              <div className="flex gap-3 mb-5">
+                {selectedProject.github && (
+                  <a
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="modal-github-link"
+                    className="flex items-center space-x-2 px-4 py-2 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-200 text-sm font-manrope"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Github className="w-4 h-4" strokeWidth={1.5} />
+                    <span>GitHub</span>
+                    <ExternalLink className="w-3 h-3" strokeWidth={1.5} />
+                  </a>
+                )}
+                {selectedProject.pypi && (
+                  <a
+                    href={selectedProject.pypi}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 px-4 py-2 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-200 text-sm font-manrope"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Code className="w-4 h-4" strokeWidth={1.5} />
+                    <span>PyPI</span>
+                    <ExternalLink className="w-3 h-3" strokeWidth={1.5} />
+                  </a>
+                )}
+              </div>
+            )}
+
+            <p className="font-manrope text-[var(--color-muted)] text-sm leading-relaxed mb-6">{selectedProject.longDescription}</p>
 
             {selectedProject.metrics && (
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {selectedProject.metrics.map((m, i) => (
-                  <div key={i} className="p-4 rounded-xl border border-white/5 bg-[#1A1A1A] text-center">
+                  <div key={i} className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface2)] text-center">
                     <div className="font-playfair text-2xl text-[#D4AF37] font-medium mb-1">{m.value}</div>
-                    <div className="font-manrope text-xs text-[#A1A1AA]">{m.label}</div>
+                    <div className="font-manrope text-xs text-[var(--color-muted)]">{m.label}</div>
                   </div>
                 ))}
               </div>
             )}
 
             <div className="mb-6">
-              <h4 className="font-manrope text-xs text-[#A1A1AA] tracking-widest uppercase mb-3">Achievements</h4>
+              <h4 className="font-manrope text-xs text-[var(--color-muted)] tracking-widest uppercase mb-3">Achievements</h4>
               <div className="space-y-2">
                 {selectedProject.achievements.map((a, i) => (
-                  <div key={i} className="flex items-center space-x-3 p-3 rounded-lg bg-[#1A1A1A]">
+                  <div key={i} className="flex items-center space-x-3 p-3 rounded-lg bg-[var(--color-surface2)]">
                     <Award className="w-4 h-4 text-[#D4AF37] shrink-0" strokeWidth={1.5} />
-                    <span className="font-manrope text-sm text-[#F5F5F7]">{a}</span>
+                    <span className="font-manrope text-sm text-[var(--color-text)]">{a}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div>
-              <h4 className="font-manrope text-xs text-[#A1A1AA] tracking-widest uppercase mb-3">Technologies</h4>
+              <h4 className="font-manrope text-xs text-[var(--color-muted)] tracking-widest uppercase mb-3">Technologies</h4>
               <div className="flex flex-wrap gap-2">
                 {selectedProject.technologies.map((tech) => (
-                  <span key={tech} className="px-3 py-1.5 border border-white/8 rounded-full text-xs font-manrope text-[#A1A1AA]">{tech}</span>
+                  <span key={tech} className="px-3 py-1.5 border border-[var(--color-border)] rounded-full text-xs font-manrope text-[var(--color-muted)]">{tech}</span>
                 ))}
               </div>
             </div>

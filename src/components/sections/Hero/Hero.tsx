@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
   return (
     <section
       data-testid="hero-section"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505] pt-16"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bg)] pt-16"
     >
       {/* Subtle radial gradient background */}
       <div
@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
 
             {/* Greeting */}
             <p
-              className="font-manrope text-[#A1A1AA] text-lg mb-3 animate-fadeInUp"
+              className="font-manrope text-[var(--color-muted)] text-lg mb-3 animate-fadeInUp"
               style={{ animationDelay: '0.1s', animationFillMode: 'both' }}
             >
               Hello, I'm
@@ -87,7 +87,7 @@ const Hero: React.FC = () => {
             {/* Name — Playfair Display */}
             <h1
               data-testid="hero-name"
-              className="font-playfair text-5xl md:text-7xl lg:text-8xl font-medium text-[#F5F5F7] leading-none tracking-tight mb-6 animate-fadeInUp"
+              className="font-playfair text-5xl md:text-7xl lg:text-8xl font-medium text-[var(--color-text)] leading-none tracking-tight mb-6 animate-fadeInUp"
               style={{ animationDelay: '0.2s', animationFillMode: 'both' }}
             >
               Ankit{' '}
@@ -121,24 +121,24 @@ const Hero: React.FC = () => {
 
             {/* Description */}
             <p
-              className="font-manrope text-[#A1A1AA] text-base md:text-lg leading-relaxed max-w-lg mb-3 animate-fadeInUp"
+              className="font-manrope text-[var(--color-muted)] text-base md:text-lg leading-relaxed max-w-lg mb-3 animate-fadeInUp"
               style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
             >
               6+ years transforming complex data into actionable insights.
             </p>
             <p
-              className="font-manrope text-[#A1A1AA] text-base md:text-lg leading-relaxed max-w-lg mb-10 animate-fadeInUp"
+              className="font-manrope text-[var(--color-muted)] text-base md:text-lg leading-relaxed max-w-lg mb-10 animate-fadeInUp"
               style={{ animationDelay: '0.45s', animationFillMode: 'both' }}
             >
               Currently{' '}
-              <span className="text-[#F5F5F7] font-medium">
+              <span className="text-[var(--color-text)] font-medium">
                 @&nbsp;Bosch Global Software Technologies
               </span>
             </p>
 
             {/* Location */}
             <div
-              className="flex items-center space-x-2 text-[#A1A1AA] text-sm mb-8 animate-fadeInUp"
+              className="flex items-center space-x-2 text-[var(--color-muted)] text-sm mb-8 animate-fadeInUp"
               style={{ animationDelay: '0.5s', animationFillMode: 'both' }}
             >
               <MapPin className="w-4 h-4" strokeWidth={1.5} />
@@ -162,15 +162,18 @@ const Hero: React.FC = () => {
               <button
                 data-testid="hero-contact-btn"
                 onClick={() => navigate('/contact')}
-                className="group inline-flex items-center justify-center px-8 py-3.5 border border-white/10 text-[#F5F5F7] font-manrope font-medium text-sm tracking-wide rounded-full transition-all duration-300 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] hover:bg-white/5 active:scale-[0.97]"
+                className="group inline-flex items-center justify-center px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-text)] font-manrope font-medium text-sm tracking-wide rounded-full transition-all duration-300 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] hover:bg-white/5 active:scale-[0.97]"
               >
                 Let's Connect
               </button>
 
               <a
-                href="#resume"
+                href="/resume.pdf"
+                download="Ankit_Anand_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 data-testid="hero-resume-btn"
-                className="group inline-flex items-center justify-center px-6 py-3.5 text-[#A1A1AA] font-manrope font-medium text-sm tracking-wide rounded-full transition-all duration-300 hover:text-[#F5F5F7] active:scale-[0.97]"
+                className="group inline-flex items-center justify-center px-6 py-3.5 text-[var(--color-muted)] font-manrope font-medium text-sm tracking-wide rounded-full transition-all duration-300 hover:text-[var(--color-text)] active:scale-[0.97]"
               >
                 <Download className="w-4 h-4 mr-2" strokeWidth={1.5} />
                 Resume
@@ -187,7 +190,7 @@ const Hero: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="social-linkedin"
-                className="p-2.5 rounded-full border border-white/8 text-[#A1A1AA] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
+                className="p-2.5 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
               >
                 <Linkedin className="w-4 h-4" strokeWidth={1.5} />
               </a>
@@ -196,14 +199,14 @@ const Hero: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="social-github"
-                className="p-2.5 rounded-full border border-white/8 text-[#A1A1AA] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
+                className="p-2.5 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
               >
                 <Github className="w-4 h-4" strokeWidth={1.5} />
               </a>
               <a
                 href="mailto:ankitanand.2910@gmail.com"
                 data-testid="social-email"
-                className="p-2.5 rounded-full border border-white/8 text-[#A1A1AA] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
+                className="p-2.5 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
               >
                 <Mail className="w-4 h-4" strokeWidth={1.5} />
               </a>
@@ -220,7 +223,7 @@ const Hero: React.FC = () => {
                   <div className="font-playfair text-2xl md:text-3xl font-medium text-[#D4AF37] mb-1">
                     {stat.value}
                   </div>
-                  <div className="font-manrope text-xs text-[#A1A1AA] leading-tight">
+                  <div className="font-manrope text-xs text-[var(--color-muted)] leading-tight">
                     {stat.label}
                   </div>
                 </div>
@@ -264,7 +267,7 @@ const Hero: React.FC = () => {
         <div className="flex justify-center mt-10 md:mt-12">
           <button
             onClick={() => window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' })}
-            className="flex flex-col items-center space-y-2 text-[#A1A1AA] hover:text-[#D4AF37] transition-colors duration-300 group"
+            className="flex flex-col items-center space-y-2 text-[var(--color-muted)] hover:text-[#D4AF37] transition-colors duration-300 group"
             aria-label="Scroll down"
           >
             <span className="font-manrope text-xs tracking-widest uppercase">Scroll</span>

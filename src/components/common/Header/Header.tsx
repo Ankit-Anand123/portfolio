@@ -20,6 +20,7 @@ export const Header: React.FC = () => {
     { name: 'About', path: '/about' },
     { name: 'Experience', path: '/experience' },
     { name: 'Projects', path: '/projects' },
+    { name: 'Open Source', path: '/open-source' },
     { name: 'Contact', path: '/contact' }
   ];
 
@@ -30,7 +31,7 @@ export const Header: React.FC = () => {
       data-testid="main-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#050505]/95 dark:bg-[#050505]/95 backdrop-blur-xl border-b border-white/5'
+          ? 'bg-[var(--color-bg)]/95 backdrop-blur-xl border-b border-[var(--color-border)]'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -41,7 +42,7 @@ export const Header: React.FC = () => {
           <Link
             to="/"
             data-testid="logo-link"
-            className="font-playfair font-medium text-xl text-[#F5F5F7] dark:text-[#F5F5F7] hover:text-[#D4AF37] transition-colors duration-300 tracking-tight"
+            className="font-playfair font-medium text-xl text-[var(--color-text)] hover:text-[var(--color-gold)] transition-colors duration-300 tracking-tight"
           >
             Ankit Anand
           </Link>
@@ -55,8 +56,8 @@ export const Header: React.FC = () => {
                 data-testid={`nav-${item.name.toLowerCase()}`}
                 className={`relative text-sm font-manrope font-medium tracking-wide transition-colors duration-300 group ${
                   isActivePath(item.path)
-                    ? 'text-[#D4AF37]'
-                    : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
+                    ? 'text-[var(--color-gold)]'
+                    : 'text-[var(--color-muted)] hover:text-[var(--color-text)]'
                 }`}
               >
                 {item.name}
@@ -75,7 +76,7 @@ export const Header: React.FC = () => {
             <button
               onClick={toggleTheme}
               data-testid="theme-toggle"
-              className="p-2 rounded-full text-[#A1A1AA] hover:text-[#D4AF37] hover:bg-white/5 transition-all duration-300"
+              className="p-2 rounded-full text-[var(--color-muted)] hover:text-[#D4AF37] hover:bg-white/5 transition-all duration-300"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
@@ -89,7 +90,7 @@ export const Header: React.FC = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               data-testid="mobile-menu-toggle"
-              className="md:hidden p-2 rounded-full text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-white/5 transition-all duration-300"
+              className="md:hidden p-2 rounded-full text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-white/5 transition-all duration-300"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
@@ -107,7 +108,7 @@ export const Header: React.FC = () => {
             isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <nav className="py-4 border-t border-white/5 flex flex-col space-y-1">
+          <nav className="py-4 border-t border-[var(--color-border)] flex flex-col space-y-1">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -117,7 +118,7 @@ export const Header: React.FC = () => {
                 className={`px-4 py-3 text-sm font-manrope font-medium rounded-lg transition-all duration-200 ${
                   isActivePath(item.path)
                     ? 'text-[#D4AF37] bg-white/5'
-                    : 'text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-white/5'
+                    : 'text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-white/5'
                 }`}
               >
                 {item.name}

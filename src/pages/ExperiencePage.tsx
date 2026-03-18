@@ -5,14 +5,14 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const ExperiencePage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-[var(--color-bg)]">
       <Experience />
-      <div className="py-12 bg-[#0F0F0F] border-t border-white/5">
+      <div className="py-12 bg-[var(--color-surface)] border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex items-center justify-between">
             <Link
               to="/about"
-              className="flex items-center space-x-2 px-6 py-3 rounded-full border border-white/8 text-[#A1A1AA] hover:text-[#F5F5F7] hover:border-white/16 font-manrope text-sm transition-all duration-300"
+              className="flex items-center space-x-2 px-6 py-3 rounded-full border border-white/8 text-[var(--color-muted)] hover:text-[var(--color-text)] hover:border-white/16 font-manrope text-sm transition-all duration-300"
             >
               <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
               <span>About</span>

@@ -82,14 +82,14 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
     }, 5000);
   };
 
-  const inputBase = 'w-full px-0 py-3 bg-transparent border-0 border-b border-white/10 text-[#F5F5F7] font-manrope text-sm placeholder-[#A1A1AA]/40 focus:outline-none focus:border-[#D4AF37]/60 transition-colors duration-300';
+  const inputBase = 'w-full px-0 py-3 bg-transparent border-0 border-b border-[var(--color-border)] text-[var(--color-text)] font-manrope text-sm placeholder-[#A1A1AA]/40 focus:outline-none focus:border-[#D4AF37]/60 transition-colors duration-300';
 
   return (
     <section
       ref={undefined}
       id="contact"
       data-testid="contact-section"
-      className={`relative min-h-screen py-24 bg-[#050505] ${className}`}
+      className={`relative min-h-screen py-24 bg-[var(--color-bg)] ${className}`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
@@ -97,10 +97,10 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
         <FadeInUp>
           <div className="mb-16">
             <p className="font-manrope text-xs text-[#D4AF37] tracking-widest uppercase mb-4">Contact</p>
-            <h1 className="font-playfair text-5xl md:text-6xl font-medium text-[#F5F5F7] mb-6">
+            <h1 className="font-playfair text-5xl md:text-6xl font-medium text-[var(--color-text)] mb-6">
               Let's Connect
             </h1>
-            <p className="font-manrope text-[#A1A1AA] text-lg leading-relaxed max-w-2xl">
+            <p className="font-manrope text-[var(--color-muted)] text-lg leading-relaxed max-w-2xl">
               Whether it's consulting, collaboration, or full-time opportunities—I'm always excited to
               work on challenging problems.
             </p>
@@ -109,12 +109,12 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
 
         {/* Tab Navigation */}
         <FadeInUp delay={100}>
-          <div className="flex space-x-1 mb-12 p-1 rounded-xl bg-[#0F0F0F] border border-white/5 w-fit">
+          <div className="flex space-x-1 mb-12 p-1 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] w-fit">
             <button
               data-testid="contact-tab-info"
               onClick={() => setActiveTab('info')}
               className={`px-6 py-2.5 rounded-lg text-sm font-manrope font-medium transition-all duration-300 ${
-                activeTab === 'info' ? 'bg-[#D4AF37] text-[#050505]' : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
+                activeTab === 'info' ? 'bg-[#D4AF37] text-[#050505]' : 'text-[var(--color-muted)] hover:text-[var(--color-text)]'
               }`}
             >
               Contact Information
@@ -123,7 +123,7 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
               data-testid="contact-tab-form"
               onClick={() => setActiveTab('form')}
               className={`px-6 py-2.5 rounded-lg text-sm font-manrope font-medium transition-all duration-300 ${
-                activeTab === 'form' ? 'bg-[#D4AF37] text-[#050505]' : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
+                activeTab === 'form' ? 'bg-[#D4AF37] text-[#050505]' : 'text-[var(--color-muted)] hover:text-[var(--color-text)]'
               }`}
             >
               Send a Message
@@ -143,14 +143,14 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
                     target={method.href.startsWith('http') ? '_blank' : undefined}
                     rel="noopener noreferrer"
                     data-testid={`contact-method-${i}`}
-                    className="group flex items-center space-x-5 p-6 rounded-2xl border border-white/5 hover:border-[#D4AF37]/20 bg-[#0F0F0F] transition-all duration-300"
+                    className="group flex items-center space-x-5 p-6 rounded-2xl border border-[var(--color-border)] hover:border-[#D4AF37]/20 bg-[var(--color-surface)] transition-all duration-300"
                   >
-                    <div className="p-3 rounded-xl bg-[#1A1A1A] text-[#D4AF37] group-hover:scale-110 transition-transform duration-300 shrink-0">
+                    <div className="p-3 rounded-xl bg-[var(--color-surface2)] text-[#D4AF37] group-hover:scale-110 transition-transform duration-300 shrink-0">
                       {method.icon}
                     </div>
                     <div>
-                      <div className="font-manrope text-xs text-[#A1A1AA] tracking-widest uppercase mb-1">{method.label}</div>
-                      <div className="font-manrope text-[#F5F5F7] group-hover:text-[#D4AF37] transition-colors duration-300">{method.value}</div>
+                      <div className="font-manrope text-xs text-[var(--color-muted)] tracking-widest uppercase mb-1">{method.label}</div>
+                      <div className="font-manrope text-[var(--color-text)] group-hover:text-[#D4AF37] transition-colors duration-300">{method.value}</div>
                     </div>
                   </a>
                 ))}
@@ -160,28 +160,28 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
             <FadeInRight>
               <div className="space-y-6">
                 {/* Location */}
-                <div className="p-8 rounded-2xl border border-white/5 bg-[#0F0F0F]">
+                <div className="p-8 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]">
                   <div className="flex items-center space-x-3 mb-4">
                     <MapPin className="w-5 h-5 text-[#D4AF37]" strokeWidth={1.5} />
-                    <h3 className="font-manrope font-semibold text-[#F5F5F7]">Location</h3>
+                    <h3 className="font-manrope font-semibold text-[var(--color-text)]">Location</h3>
                   </div>
-                  <p className="font-manrope text-[#A1A1AA] leading-relaxed">
+                  <p className="font-manrope text-[var(--color-muted)] leading-relaxed">
                     Coimbatore, Tamil Nadu, India<br />
                     <span className="text-sm">Open to remote opportunities worldwide</span>
                   </p>
                 </div>
 
                 {/* Response Time */}
-                <div className="p-8 rounded-2xl border border-white/5 bg-[#0F0F0F]">
+                <div className="p-8 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]">
                   <div className="flex items-center space-x-3 mb-4">
                     <Clock className="w-5 h-5 text-[#D4AF37]" strokeWidth={1.5} />
-                    <h3 className="font-manrope font-semibold text-[#F5F5F7]">Response Time</h3>
+                    <h3 className="font-manrope font-semibold text-[var(--color-text)]">Response Time</h3>
                   </div>
-                  <p className="font-manrope text-[#A1A1AA]">
+                  <p className="font-manrope text-[var(--color-muted)]">
                     I typically respond within{' '}
                     <span className="text-[#D4AF37] font-medium">24 hours</span>
                   </p>
-                  <p className="font-manrope text-sm text-[#A1A1AA]/60 mt-2">
+                  <p className="font-manrope text-sm text-[var(--color-muted)]/60 mt-2">
                     High response rate · Professional communication
                   </p>
                 </div>
@@ -210,8 +210,8 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
                   className="p-12 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 text-center"
                 >
                   <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-6" strokeWidth={1.5} />
-                  <h3 className="font-playfair text-2xl font-medium text-[#F5F5F7] mb-3">Message Sent!</h3>
-                  <p className="font-manrope text-[#A1A1AA]">
+                  <h3 className="font-playfair text-2xl font-medium text-[var(--color-text)] mb-3">Message Sent!</h3>
+                  <p className="font-manrope text-[var(--color-muted)]">
                     Thank you for reaching out. I'll get back to you within 24 hours.
                   </p>
                 </div>
@@ -221,11 +221,11 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
                 <form
                   onSubmit={handleSubmit}
                   data-testid="contact-form"
-                  className="p-8 rounded-2xl border border-white/5 bg-[#0F0F0F] space-y-8"
+                  className="p-8 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] space-y-8"
                 >
                   {/* Inquiry Type */}
                   <div>
-                    <label className="block font-manrope text-xs text-[#A1A1AA] tracking-widest uppercase mb-4">
+                    <label className="block font-manrope text-xs text-[var(--color-muted)] tracking-widest uppercase mb-4">
                       Inquiry Type
                     </label>
                     <div className="flex flex-wrap gap-2">
@@ -238,7 +238,7 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
                           className={`px-4 py-2 rounded-full border text-sm font-manrope transition-all duration-200 ${
                             formData.inquiryType === type.value
                               ? 'border-[#D4AF37] bg-[#D4AF37]/10 text-[#D4AF37]'
-                              : 'border-white/8 text-[#A1A1AA] hover:border-[#D4AF37]/30 hover:text-[#D4AF37]'
+                              : 'border-[var(--color-border)] text-[var(--color-muted)] hover:border-[#D4AF37]/30 hover:text-[#D4AF37]'
                           }`}
                         >
                           {type.label}
@@ -249,7 +249,7 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
 
                   {/* Name */}
                   <div>
-                    <label className="block font-manrope text-xs text-[#A1A1AA] tracking-widest uppercase mb-2">Name</label>
+                    <label className="block font-manrope text-xs text-[var(--color-muted)] tracking-widest uppercase mb-2">Name</label>
                     <input
                       type="text"
                       placeholder="Your full name"
@@ -263,7 +263,7 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
 
                   {/* Email */}
                   <div>
-                    <label className="block font-manrope text-xs text-[#A1A1AA] tracking-widest uppercase mb-2">Email</label>
+                    <label className="block font-manrope text-xs text-[var(--color-muted)] tracking-widest uppercase mb-2">Email</label>
                     <input
                       type="email"
                       placeholder="your@email.com"
@@ -277,7 +277,7 @@ export const Contact: React.FC<ContactSectionProps> = ({ className = '' }) => {
 
                   {/* Message */}
                   <div>
-                    <label className="block font-manrope text-xs text-[#A1A1AA] tracking-widest uppercase mb-2">Message</label>
+                    <label className="block font-manrope text-xs text-[var(--color-muted)] tracking-widest uppercase mb-2">Message</label>
                     <textarea
                       rows={5}
                       placeholder="Tell me about your project or opportunity..."

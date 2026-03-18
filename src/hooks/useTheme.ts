@@ -1,29 +1,42 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 
 type Theme = 'light' | 'dark';
 
-export const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>('light');
+// Use stored preference or default to dark
+const getInitialTheme = (): Theme => {
+  if (typeof window !== 'undefined') {
+    const saved = localStorage.getItem('theme') as Theme | null;
+    if (saved === 'light' || saved === 'dark') return saved;
+  }
+  return 'dark';
+};
 
+const applyTheme = (t: Theme) => {
+  if (t === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+};
+
+export const useTheme = () => {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+
+  // Apply theme synchronously before first paint to avoid flash
+  useLayoutEffect(() => {
+    applyTheme(theme);
+  }, [theme]);
+
+  // Also apply on mount to handle SSR-like scenarios
   useEffect(() => {
-    // Check if user has a saved preference
-    const savedTheme = localStorage.getItem('theme') as Theme | null;
-    
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-    } else {
-      // Default to dark (luxury theme)
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
-    }
+    applyTheme(theme);
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newTheme: Theme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    applyTheme(newTheme);
   };
 
   return { theme, toggleTheme };

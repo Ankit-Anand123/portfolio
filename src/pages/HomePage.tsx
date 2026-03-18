@@ -97,7 +97,7 @@ export const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-[var(--color-bg)]">
 
       {/* Hero Section */}
       <Hero />
@@ -105,7 +105,7 @@ export const HomePage: React.FC = () => {
       {/* ── Stats Strip ── */}
       <section
         data-testid="stats-section"
-        className="py-16 border-y border-white/5"
+        className="py-16 border-y border-[var(--color-border)]"
         style={{ background: 'linear-gradient(180deg, #050505 0%, #0F0F0F 100%)' }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -116,7 +116,7 @@ export const HomePage: React.FC = () => {
                   <div className="font-playfair text-4xl md:text-5xl font-medium text-[#D4AF37] mb-2">
                     {stat.number}
                   </div>
-                  <div className="font-manrope text-sm text-[#A1A1AA] tracking-wide">
+                  <div className="font-manrope text-sm text-[var(--color-muted)] tracking-wide">
                     {stat.label}
                   </div>
                 </div>
@@ -129,13 +129,13 @@ export const HomePage: React.FC = () => {
       {/* ── Current Highlights ── */}
       <section
         data-testid="highlights-section"
-        className="py-24 bg-[#0F0F0F]"
+        className="py-24 bg-[var(--color-surface)]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <FadeInUp>
             <div className="mb-16">
               <p className="font-manrope text-xs text-[#D4AF37] tracking-widest uppercase mb-4">Right Now</p>
-              <h2 className="font-playfair text-4xl md:text-5xl font-medium text-[#F5F5F7]">
+              <h2 className="font-playfair text-4xl md:text-5xl font-medium text-[var(--color-text)]">
                 Current Highlights
               </h2>
             </div>
@@ -146,16 +146,16 @@ export const HomePage: React.FC = () => {
               <FadeInUp key={i} delay={i * 150}>
                 <div
                   data-testid={`highlight-card-${i}`}
-                  className="group p-8 rounded-2xl border border-white/5 hover:border-[#D4AF37]/20 transition-all duration-500 hover:bg-[#1A1A1A]/50"
+                  className="group p-8 rounded-2xl border border-[var(--color-border)] hover:border-[#D4AF37]/20 transition-all duration-500 hover:bg-[var(--color-surface2)]/50"
                   style={{ backdropFilter: 'blur(8px)' }}
                 >
                   <div className="text-[#D4AF37] mb-5 transition-transform duration-300 group-hover:scale-110 inline-block">
                     {item.icon}
                   </div>
-                  <h3 className="font-manrope text-xs text-[#A1A1AA] tracking-widest uppercase mb-3">
+                  <h3 className="font-manrope text-xs text-[var(--color-muted)] tracking-widest uppercase mb-3">
                     {item.title}
                   </h3>
-                  <p className="font-manrope text-[#F5F5F7] text-base leading-relaxed">
+                  <p className="font-manrope text-[var(--color-text)] text-base leading-relaxed">
                     {item.content}
                   </p>
                 </div>
@@ -168,7 +168,7 @@ export const HomePage: React.FC = () => {
       {/* ── Expertise Areas ── */}
       <section
         data-testid="expertise-section"
-        className="py-24 bg-[#050505]"
+        className="py-24 bg-[var(--color-bg)]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <FadeInUp>
@@ -176,7 +176,7 @@ export const HomePage: React.FC = () => {
               <p className="font-manrope text-xs text-[#D4AF37] tracking-widest uppercase mb-4">
                 What I Do
               </p>
-              <h2 className="font-playfair text-4xl md:text-5xl font-medium text-[#F5F5F7]">
+              <h2 className="font-playfair text-4xl md:text-5xl font-medium text-[var(--color-text)]">
                 Core Expertise
               </h2>
             </div>
@@ -187,22 +187,22 @@ export const HomePage: React.FC = () => {
               <FadeInUp key={i} delay={i * 100}>
                 <div
                   data-testid={`expertise-card-${i}`}
-                  className="group p-8 rounded-2xl border border-white/5 hover:border-[#D4AF37]/20 bg-[#0F0F0F] transition-all duration-500 hover:bg-[#1A1A1A]"
+                  className="group p-8 rounded-2xl border border-[var(--color-border)] hover:border-[#D4AF37]/20 bg-[var(--color-surface)] transition-all duration-500 hover:bg-[var(--color-surface2)]"
                 >
                   <div className="text-[#D4AF37] mb-6 transition-transform duration-300 group-hover:scale-110 inline-block">
                     {area.icon}
                   </div>
-                  <h3 className="font-manrope font-semibold text-[#F5F5F7] text-lg mb-3">
+                  <h3 className="font-manrope font-semibold text-[var(--color-text)] text-lg mb-3">
                     {area.title}
                   </h3>
-                  <p className="font-manrope text-[#A1A1AA] text-sm leading-relaxed mb-6">
+                  <p className="font-manrope text-[var(--color-muted)] text-sm leading-relaxed mb-6">
                     {area.description}
                   </p>
                   <div className="space-y-1.5">
                     {area.skills.map((skill, j) => (
                       <div key={j} className="flex items-center space-x-2">
                         <div className="w-1 h-1 rounded-full bg-[#D4AF37] opacity-60" />
-                        <span className="font-manrope text-xs text-[#A1A1AA]">{skill}</span>
+                        <span className="font-manrope text-xs text-[var(--color-muted)]">{skill}</span>
                       </div>
                     ))}
                   </div>
@@ -217,7 +217,7 @@ export const HomePage: React.FC = () => {
       {/* ── Portfolio Navigation ── */}
       <section
         data-testid="portfolio-nav-section"
-        className="py-24 bg-[#0F0F0F]"
+        className="py-24 bg-[var(--color-surface)]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <FadeInUp>
@@ -225,7 +225,7 @@ export const HomePage: React.FC = () => {
               <p className="font-manrope text-xs text-[#D4AF37] tracking-widest uppercase mb-4">
                 Explore
               </p>
-              <h2 className="font-playfair text-4xl md:text-5xl font-medium text-[#F5F5F7]">
+              <h2 className="font-playfair text-4xl md:text-5xl font-medium text-[var(--color-text)]">
                 My Portfolio
               </h2>
             </div>
@@ -237,12 +237,12 @@ export const HomePage: React.FC = () => {
                 <Link
                   to={section.path}
                   data-testid={`portfolio-link-${i}`}
-                  className="group block p-10 rounded-2xl border border-white/5 hover:border-[#D4AF37]/20 bg-[#050505] transition-all duration-500 hover:bg-[#1A1A1A]/60"
+                  className="group block p-10 rounded-2xl border border-[var(--color-border)] hover:border-[#D4AF37]/20 bg-[var(--color-bg)] transition-all duration-500 hover:bg-[var(--color-surface2)]/60"
                 >
-                  <h3 className="font-playfair text-2xl md:text-3xl font-medium text-[#F5F5F7] mb-4 group-hover:text-[#D4AF37] transition-colors duration-300">
+                  <h3 className="font-playfair text-2xl md:text-3xl font-medium text-[var(--color-text)] mb-4 group-hover:text-[#D4AF37] transition-colors duration-300">
                     {section.title}
                   </h3>
-                  <p className="font-manrope text-[#A1A1AA] text-sm leading-relaxed mb-8">
+                  <p className="font-manrope text-[var(--color-muted)] text-sm leading-relaxed mb-8">
                     {section.description}
                   </p>
                   <div className="flex items-center text-[#D4AF37] text-sm font-manrope font-medium">
@@ -256,10 +256,94 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* ── Open Source Spotlight ── */}
+      <section
+        data-testid="open-source-spotlight"
+        className="py-24 bg-[var(--color-surface)]"
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <FadeInLeft>
+              <div>
+                <span className="inline-flex items-center space-x-2 mb-6 px-4 py-2 rounded-full border border-purple-500/20 bg-purple-500/5">
+                  <span className="w-2 h-2 rounded-full bg-purple-400" />
+                  <span className="text-xs font-manrope text-purple-400 tracking-widest uppercase">Open Source</span>
+                </span>
+                <p className="font-manrope text-xs text-[#D4AF37] tracking-widest uppercase mb-4">
+                  Latest Release
+                </p>
+                <h2 className="font-playfair text-3xl md:text-4xl font-medium text-[var(--color-text)] mb-6">
+                  HypoTestX — v1.0.6
+                </h2>
+                <p className="font-manrope text-[var(--color-muted)] text-base leading-relaxed mb-8">
+                  A Python library that lets you ask statistical questions in plain English.
+                  HypoTestX routes to the right test automatically — with or without an LLM backend.
+                  Zero mandatory dependencies, 532 tests passing.
+                </p>
+                <div className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface2)] mb-8">
+                  <code className="font-jetbrains text-sm text-[#D4AF37]">pip install hypotestx</code>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    to="/open-source"
+                    data-testid="home-opensource-btn"
+                    className="group inline-flex items-center justify-center px-6 py-3 bg-[#D4AF37] text-[#050505] font-manrope font-semibold text-sm rounded-full transition-all duration-300 hover:bg-[#F0D060]"
+                  >
+                    Learn More
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" strokeWidth={2} />
+                  </Link>
+                  <a
+                    href="https://github.com/Ankit-Anand123/HypoTestX"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-6 py-3 border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 font-manrope text-sm rounded-full transition-all duration-300"
+                  >
+                    <Github className="w-4 h-4 mr-2" strokeWidth={1.5} />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </FadeInLeft>
+
+            <FadeInRight>
+              <div className="rounded-2xl border border-[var(--color-border)] overflow-hidden">
+                <div className="px-6 py-4 border-b border-[var(--color-border)] bg-[var(--color-surface2)] flex items-center justify-between">
+                  <span className="font-manrope text-sm text-[var(--color-muted)]">hypotestx_demo.py</span>
+                  <div className="flex space-x-1.5">
+                    {['#FF5F57', '#FFBD2E', '#28C840'].map((c) => (
+                      <div key={c} className="w-3 h-3 rounded-full" style={{ backgroundColor: c }} />
+                    ))}
+                  </div>
+                </div>
+                <div className="p-6 bg-[var(--color-surface2)]">
+                  <pre className="font-jetbrains text-sm leading-relaxed overflow-x-auto">
+{`import hypotestx as hx
+import pandas as pd
+
+df = pd.read_csv('survey.csv')
+
+# Ask in plain English — no API key needed
+result = hx.analyze(
+    df, "Do males earn more than females?"
+)
+
+print(result.summary())
+# Statistic (t):   3.2456
+# p-value:         0.0012
+# Significant:     Yes (alpha=0.05)
+# Effect size (d): 0.6834  (medium)`}
+                  </pre>
+                </div>
+              </div>
+            </FadeInRight>
+          </div>
+        </div>
+      </section>
+
       {/* ── Featured Work ── */}
       <section
         data-testid="featured-work-section"
-        className="py-24 bg-[#050505]"
+        className="py-24 bg-[var(--color-bg)]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -269,31 +353,32 @@ export const HomePage: React.FC = () => {
                 <p className="font-manrope text-xs text-[#D4AF37] tracking-widest uppercase mb-4">
                   Featured Project
                 </p>
-                <h2 className="font-playfair text-3xl md:text-4xl font-medium text-[#F5F5F7] mb-6">
-                  Steel Price Forecasting System
+                <h2 className="font-playfair text-3xl md:text-4xl font-medium text-[var(--color-text)] mb-6">
+                  EasyBot — Agentic AI Chatbot
                 </h2>
-                <p className="font-manrope text-[#A1A1AA] text-base leading-relaxed mb-8">
-                  Advanced time series analysis for Gerdau steel manufacturing, achieving 90%
-                  confidence intervals with 23% MAPE accuracy. Analyzes trends, seasonality, and
-                  auto-correlation while identifying historical anomalies.
+                <p className="font-manrope text-[var(--color-muted)] text-base leading-relaxed mb-8">
+                  Designed and built EasyBot at Bosch — an agentic AI chatbot powered by LangGraph
+                  multi-agent orchestration. Features SQL dry-run, guided query prompting, and a
+                  parallel Agno-based agent. Delivered via Chainlit UI with significantly reduced
+                  data analysis turnaround time.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="p-5 rounded-xl border border-white/5 bg-[#0F0F0F]">
-                    <div className="font-playfair text-2xl text-[#D4AF37] font-medium mb-1">23%</div>
-                    <div className="font-manrope text-xs text-[#A1A1AA]">MAPE Accuracy</div>
+                  <div className="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
+                    <div className="font-playfair text-2xl text-[#D4AF37] font-medium mb-1">2+</div>
+                    <div className="font-manrope text-xs text-[var(--color-muted)]">Agents Built</div>
                   </div>
-                  <div className="p-5 rounded-xl border border-white/5 bg-[#0F0F0F]">
-                    <div className="font-playfair text-2xl text-[#D4AF37] font-medium mb-1">90%</div>
-                    <div className="font-manrope text-xs text-[#A1A1AA]">Confidence Interval</div>
+                  <div className="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
+                    <div className="font-playfair text-2xl text-[#D4AF37] font-medium mb-1">3x</div>
+                    <div className="font-manrope text-xs text-[var(--color-muted)]">Faster Analysis</div>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-8">
-                  {['Python', 'Statsmodels', 'Time Series', 'Streamlit'].map((tech) => (
+                  {['LangGraph', 'LangChain', 'Chainlit', 'Python', 'SQL', 'Multi-Agent'].map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1.5 border border-white/8 rounded-full text-xs font-manrope text-[#A1A1AA]"
+                      className="px-3 py-1.5 border border-[var(--color-border)] rounded-full text-xs font-manrope text-[var(--color-muted)]"
                     >
                       {tech}
                     </span>
@@ -314,32 +399,38 @@ export const HomePage: React.FC = () => {
 
             <FadeInRight>
               <div
-                className="rounded-2xl border border-white/5 overflow-hidden p-10"
+                className="rounded-2xl border border-[var(--color-border)] overflow-hidden p-10"
                 style={{
-                  background: 'linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 100%)',
+                  background: 'linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface2) 100%)',
                   boxShadow: 'inset 0 1px 0 rgba(212,175,55,0.08)',
                 }}
               >
                 <div className="space-y-3 mb-8">
-                  {[85, 65, 90, 55, 78].map((h, i) => (
-                    <div key={i} className="flex items-end space-x-2">
-                      <div className="flex-1 bg-[#050505] rounded">
+                  {[
+                    { label: 'NL Query', pct: 92 },
+                    { label: 'SQL Agent', pct: 85 },
+                    { label: 'Data Analysis', pct: 95 },
+                    { label: 'Multi-Agent', pct: 78 },
+                    { label: 'Response Accuracy', pct: 88 },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center space-x-3">
+                      <span className="font-manrope text-xs text-[var(--color-muted)] w-28 shrink-0">{item.label}</span>
+                      <div className="flex-1 bg-[var(--color-bg)] rounded-full h-2">
                         <div
-                          className="h-2 rounded transition-all duration-1000"
+                          className="h-2 rounded-full"
                           style={{
-                            width: `${h}%`,
-                            background: 'linear-gradient(90deg, #D4AF37, rgba(212,175,55,0.3))',
-                            animationDelay: `${i * 200}ms`,
+                            width: `${item.pct}%`,
+                            background: 'linear-gradient(90deg, #D4AF37, rgba(212,175,55,0.4))',
                           }}
                         />
                       </div>
-                      <span className="font-manrope text-xs text-[#A1A1AA] w-8 text-right">{h}%</span>
+                      <span className="font-manrope text-xs text-[#D4AF37] w-8 text-right">{item.pct}%</span>
                     </div>
                   ))}
                 </div>
-                <div className="border-t border-white/5 pt-6">
-                  <p className="font-playfair text-xl text-[#F5F5F7] mb-1">Data Visualization</p>
-                  <p className="font-manrope text-sm text-[#A1A1AA]">Interactive analytics & forecasting</p>
+                <div className="border-t border-[var(--color-border)] pt-6">
+                  <p className="font-playfair text-xl text-[var(--color-text)] mb-1">Agentic AI Architecture</p>
+                  <p className="font-manrope text-sm text-[var(--color-muted)]">LangGraph · Multi-agent · Chainlit</p>
                 </div>
               </div>
             </FadeInRight>
@@ -364,10 +455,10 @@ export const HomePage: React.FC = () => {
             <p className="font-manrope text-xs text-[#D4AF37] tracking-widest uppercase mb-6">
               Let's Work Together
             </p>
-            <h2 className="font-playfair text-4xl md:text-6xl font-medium text-[#F5F5F7] mb-6 leading-tight">
+            <h2 className="font-playfair text-4xl md:text-6xl font-medium text-[var(--color-text)] mb-6 leading-tight">
               Ready to Transform Your Data?
             </h2>
-            <p className="font-manrope text-[#A1A1AA] text-lg leading-relaxed mb-10">
+            <p className="font-manrope text-[var(--color-muted)] text-lg leading-relaxed mb-10">
               Let's collaborate to turn your data challenges into strategic opportunities.
               Whether it's machine learning, analytics, or AI solutions—I'm here to help.
             </p>
@@ -384,8 +475,11 @@ export const HomePage: React.FC = () => {
                 Start a Conversation
               </Link>
               <a
-                href="#resume"
-                className="group inline-flex items-center justify-center px-8 py-3.5 border border-white/10 text-[#F5F5F7] font-manrope font-medium text-sm tracking-wide rounded-full transition-all duration-300 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] active:scale-[0.97]"
+                href="/resume.pdf"
+                download="Ankit_Anand_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-text)] font-manrope font-medium text-sm tracking-wide rounded-full transition-all duration-300 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] active:scale-[0.97]"
               >
                 <Download className="w-4 h-4 mr-2" strokeWidth={1.5} />
                 Download Resume
@@ -399,7 +493,7 @@ export const HomePage: React.FC = () => {
                 href="https://linkedin.com/in/ankitanand29"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full border border-white/8 text-[#A1A1AA] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
+                className="p-3 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
               >
                 <Linkedin className="w-5 h-5" strokeWidth={1.5} />
               </a>
@@ -407,13 +501,13 @@ export const HomePage: React.FC = () => {
                 href="https://github.com/ankitanand29"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full border border-white/8 text-[#A1A1AA] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
+                className="p-3 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
               >
                 <Github className="w-5 h-5" strokeWidth={1.5} />
               </a>
               <a
                 href="mailto:ankitanand.2910@gmail.com"
-                className="p-3 rounded-full border border-white/8 text-[#A1A1AA] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
+                className="p-3 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 transition-all duration-300"
               >
                 <Mail className="w-5 h-5" strokeWidth={1.5} />
               </a>
